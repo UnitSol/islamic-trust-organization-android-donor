@@ -5,5 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmailVarificationActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mask_group" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Email Varification"
+                android:textColor="@color/black"
+                android:textSize="32dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginBottom="35dp"
+                android:paddingTop="90dp"
+                android:paddingLeft="25pt"
+                android:text="Please type OPT code that we give you"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/email_varification"
+            android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="25pt">
+            <EditText
+                android:id="@+id/inputOne"
+                android:layout_width="150px"
+                android:layout_height="150px"
+
+                android:background="@drawable/edittext_style"
+                />
+            <EditText
+                android:id="@+id/inputTwo"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/edittext_style"
+                />
+            <EditText
+                android:id="@+id/inputThree"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/edittext_style"
+                />
+            <EditText
+                android:id="@+id/inputFour"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/edittext_style"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/counterTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="0027"
+            android:textSize="40sp"
+            android:layout_marginTop="48dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't get the code? "/>
+            <TextView
+                android:id="@+id/textSignInCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="@color/headingColor"/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/verifyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/button_curve"
+            android:text="Verify"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_marginTop="48dp"/>
+    </LinearLayout>
 
 </RelativeLayout>
