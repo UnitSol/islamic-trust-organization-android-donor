@@ -16,6 +16,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp">
             <ImageView
+                android:id="@+id/backThroughBtn"
                 android:layout_width="100px"
                 android:layout_height="60px"
                 android:src="@drawable/go_back_botton"/>
@@ -30,6 +31,7 @@
 
         </LinearLayout>
         <ListView
+            android:id="@+id/newProjectItemsList"
             android:layout_marginTop="48dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
