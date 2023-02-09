@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/edittext_style"
+        android:orientation="horizontal"
+        android:layout_margin="15dp">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginLeft="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="fill"
+            app:shapeAppearance="@style/Circular"
+            android:background="@drawable/list_image_style"
+            android:src="@drawable/crossed_steel_pillars_2472ld_1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="18dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Project Name"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-black"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Donation : "
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$3,987"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60px"
+                android:layout_height="60dp"
+                android:src="@drawable/go_to_next_screen"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                />
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
