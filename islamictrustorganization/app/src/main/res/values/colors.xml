@@ -11,4 +11,5 @@
     <color name="buttonColor">#3C56A2</color>
     <color name="headingColor">#70A6ED</color>
     <color name="editTextRadius">#C4C4C4</color>
+    <color name="viewBackground">#F3E6D9</color>
 </resources>
