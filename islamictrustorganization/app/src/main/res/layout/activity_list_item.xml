@@ -3,50 +3,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="80dp"
-        android:gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/edittext_style"
-        android:orientation="horizontal"
-        android:layout_margin="15dp">
-        <com.google.android.material.imageview.ShapeableImageView
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginLeft="18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="fill"
-            app:shapeAppearance="@style/Circular"
-            android:background="@drawable/list_image_style"
-            android:src="@drawable/crossed_steel_pillars_2472ld_1"/>
+            android:background="@drawable/list_image_style">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/list_image_style"
+                android:src="@drawable/crossed_steel_pillars_2472ld_1"
+                app:shapeAppearance="@style/Circular" />
+
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="18dp">
+            android:layout_marginLeft="18dp"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
                 android:text="Project Name"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-black"/>
+                android:textColor="@color/black" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Donation : "
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$3,987"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -54,10 +71,9 @@
             <ImageView
                 android:layout_width="60px"
                 android:layout_height="60dp"
-                android:src="@drawable/go_to_next_screen"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="30dp"
-                />
+                android:src="@drawable/go_to_next_screen" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

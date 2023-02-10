@@ -6,136 +6,185 @@
     android:layout_height="match_parent"
     tools:context=".ProjectDetailActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/projectImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/project_detail_image" />
-
-            <ImageView
-                android:id="@+id/goBackBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50px"
-                android:paddingTop="50dp"
-                android:src="@drawable/go_back_botton" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="41px"
-            android:layout_marginTop="37dp"
-            android:layout_marginRight="10dp"
-            >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/projectName"
+                <ImageView
+                    android:id="@+id/projectImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Project Name"
-                    android:textColor="@color/black"
-                    android:textFontWeight="800" />
+                    android:src="@drawable/project_detail_image" />
+
+                <ImageView
+                    android:id="@+id/goBackBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="50px"
+                    android:paddingTop="50dp"
+                    android:src="@drawable/go_back_botton" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="41px"
+                android:layout_marginTop="37dp"
+                android:layout_marginRight="31dp"
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/projectName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Project Name"
+                        android:textColor="@color/black"
+                        android:textFontWeight="800" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Start Date : "
+                            android:textColor="#444444"/>
+                        <TextView
+                            android:id="@+id/textStartDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="06 August 2022"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true">
+                    <TextView
+                        android:id="@+id/projectPrize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$3,987"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#B67638"
+                        android:textFontWeight="800"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Donation"
+                        android:textColor="@color/black"/>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/textview_background"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Start Date : "
+                        android:text="Expected End Date : "
                         android:textColor="#444444"/>
                     <TextView
-                        android:id="@+id/textStartDate"
+                        android:id="@+id/textEndDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06 August 2022"/>
+                        android:text="01 January 2023"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status : "
+                        android:textColor="#444444" />
+
+                    <TextView
+                        android:id="@+id/textStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In Progress" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentRight="true">
+                android:layout_marginTop="29dp"
+                android:layout_marginLeft="41px"
+                android:layout_marginRight="32dp">
+
                 <TextView
-                    android:id="@+id/projectPrize"
+                    android:id="@+id/textDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$3,987"
-                    android:fontFamily="sans-serif-black"
-                    android:textColor="#B67638"
-                    android:textFontWeight="800"
-                    />
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. "/>
                 <TextView
+                    android:id="@+id/textReadMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Donation"
-                    android:textColor="@color/black"/>
-
-
+                    android:text="Read More..."
+                    android:textColor="#1877F2"/>
             </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5pt"
+                android:background="@color/editTextRadius"
 
-            <LinearLayout
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/textview_background"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Expected End Date : "
-                    android:textColor="#444444"/>
-                <TextView
-                    android:id="@+id/textEndDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="01 January 2023"/>
-            </LinearLayout>
-            <LinearLayout
+                android:layout_marginTop="41dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp">
+                android:text="Update"
+                android:fontFamily="sans-serif-black"
+                android:textFontWeight="900"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"/>
+            <ListView
+                android:id="@+id/updateListItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="35dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status : "
-                    android:textColor="#444444" />
-
-                <TextView
-                    android:id="@+id/textStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="In Progress" />
-            </LinearLayout>
-
-        </RelativeLayout>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

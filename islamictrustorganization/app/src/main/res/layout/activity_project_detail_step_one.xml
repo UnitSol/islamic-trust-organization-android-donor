@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProjectDetailStepOneActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/go_back_botton"/>
+        <TextView
+            android:layout_marginTop="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="project name"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clouser of the build site"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="02 AUGUST 2019"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16sp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. Nulla dictum nulla lectus."
+            android:textAlignment="viewStart"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>
