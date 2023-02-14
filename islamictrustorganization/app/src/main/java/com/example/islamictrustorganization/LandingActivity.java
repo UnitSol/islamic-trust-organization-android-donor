@@ -37,9 +37,9 @@ public class LandingActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_donner_dashboard:
-                    startActivity(new Intent(getApplicationContext(), LandingActivity.class));
-                    overridePendingTransition(0, 0);
-                    finish();
+//                    startActivity(new Intent(getApplicationContext(), LandingActivity.class));
+//                    overridePendingTransition(0, 0);
+//                    finish();
                     return true;
                 case R.id.menu_donner_new_projects:
                     startActivity(new Intent(getApplicationContext(), NewProjectActivity.class));
