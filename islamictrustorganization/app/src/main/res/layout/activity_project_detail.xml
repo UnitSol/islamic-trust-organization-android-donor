@@ -177,14 +177,12 @@
                 android:textSize="18dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="35dp"/>
-            <ListView
-                android:id="@+id/updateListItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="35dp"/>
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/updateProjectList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout_already_listed_title"
+                tools:listitem="@layout/update_list_item" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

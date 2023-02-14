@@ -113,17 +113,24 @@
                         android:paddingTop="5px"
                         android:text="In Progress Projects"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="20dp"/>
                 </LinearLayout>
             </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/completeProjectList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout_already_listed_title"
+                tools:listitem="@layout/activity_list_item" />
 
-            <ListView
-                android:id="@+id/projectList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginRight="35dp" />
+            <!--            <ListView-->
+<!--                android:id="@+id/projectList"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="35dp"-->
+<!--                android:layout_marginTop="35dp"-->
+<!--                android:layout_marginRight="35dp" />-->
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView

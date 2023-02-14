@@ -3,9 +3,9 @@ package com.example.islamictrustorganization;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -13,7 +13,7 @@ public class NewProjectActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     ImageView backThroughBtn;
-    ListView newProjectItemsList;
+    RecyclerView newProjectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class NewProjectActivity extends AppCompatActivity {
 
     private void initalizing() {
         backThroughBtn = findViewById(R.id.backThroughBtn);
-        newProjectItemsList = findViewById(R.id.newProjectItemsList);
+        newProjectList = findViewById(R.id.newProjectList);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.menu_donner_dashboard);

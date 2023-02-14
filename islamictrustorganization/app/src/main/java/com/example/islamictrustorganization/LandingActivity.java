@@ -3,10 +3,10 @@ package com.example.islamictrustorganization;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -14,7 +14,7 @@ public class LandingActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageView userPicture;
     TextView userName , textDollarWallet , textCompletedProject , textInProgressProject;
-    ListView projectList;
+    RecyclerView completeProjectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class LandingActivity extends AppCompatActivity {
         textCompletedProject = findViewById(R.id.textCompletedProject);
         textInProgressProject = findViewById(R.id.textInProgressProject);
 
-        projectList = findViewById(R.id.projectList);
+        completeProjectList = findViewById(R.id.completeProjectList);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.menu_donner_dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
