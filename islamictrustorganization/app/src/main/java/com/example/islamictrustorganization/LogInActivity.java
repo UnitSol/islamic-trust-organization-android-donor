@@ -3,7 +3,6 @@ package com.example.islamictrustorganization;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,8 +12,9 @@ public class LogInActivity extends AppCompatActivity {
 
     EditText loginEmail , loginPassword;
     Button loginBtn;
-    TextView textForgetPassword , textSignUp;
-    ImageButton faceBookLoginBtn , googleLoginBtn , appleLoginBtn;
+    TextView textForgetPassword ;
+    //TextView textSignUp;
+    //ImageButton faceBookLoginBtn , googleLoginBtn , appleLoginBtn;
     ImageView eyePasswordBtn;
 
     @Override
@@ -31,11 +31,11 @@ public class LogInActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
 
         textForgetPassword = findViewById(R.id.textForgetPassword);
-        textSignUp = findViewById(R.id.textSignUp);
-
-        faceBookLoginBtn = findViewById(R.id.faceBookLoginBtn);
-        googleLoginBtn = findViewById(R.id.googleLoginBtn);
-        appleLoginBtn = findViewById(R.id.appleLoginBtn);
+//        textSignUp = findViewById(R.id.textSignUp);
+//
+//        faceBookLoginBtn = findViewById(R.id.faceBookLoginBtn);
+//        googleLoginBtn = findViewById(R.id.googleLoginBtn);
+//        appleLoginBtn = findViewById(R.id.appleLoginBtn);
 
         eyePasswordBtn = findViewById(R.id.eyePasswordBtn);
 

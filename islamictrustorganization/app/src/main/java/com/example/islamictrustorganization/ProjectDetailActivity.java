@@ -2,15 +2,15 @@ package com.example.islamictrustorganization;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     TextView projectName , textStartDate , textEndDate , projectPrize ,textStatus , textDescription , textReadMore;
     ImageView projectImage , goBackBtn;
-    ListView updateListItem;
+    RecyclerView updateProjectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
         projectImage = findViewById(R.id.projectImage);
         goBackBtn = findViewById(R.id.goBackBtn);
 
-        updateListItem = findViewById(R.id.updateListItem);
+        updateProjectList = findViewById(R.id.updateProjectList);
     }
 }

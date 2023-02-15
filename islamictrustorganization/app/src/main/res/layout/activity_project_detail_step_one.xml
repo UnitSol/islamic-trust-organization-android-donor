@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProjectDetailStepOneActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,19 +13,24 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <ImageView
+            android:id="@+id/projectDetailGoBackBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/go_back_botton"/>
         <TextView
+            android:id="@+id/projectHeading"
             android:layout_marginTop="35dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="project name"
             android:textAllCaps="true"
+            android:layout_below="@+id/projectDetailGoBackBtn"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-black"
             android:textSize="18sp"/>
         <TextView
+            android:id="@+id/projectNameSubHeading"
+            android:layout_below="@+id/projectHeading"
             android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,16 +40,27 @@
             android:textStyle="bold"
             android:textSize="12sp"/>
         <TextView
+            android:id="@+id/projectDate"
+            android:layout_below="@+id/projectNameSubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="02 AUGUST 2019"/>
         <TextView
+            android:id="@+id/projectDescription"
+            android:layout_below="@+id/projectDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16sp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. Nulla dictum nulla lectus."
             android:textAlignment="viewStart"/>
-        
-    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/imageList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/projectDescription"
+            android:layout_marginTop="45dp"
+            tools:listitem="@layout/li_project_detail_image"/>
+    </RelativeLayout>
 
 </RelativeLayout>
