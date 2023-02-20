@@ -19,12 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mask_group"
-                    tools:ignore="ImageContrastCheck" />
-
                 <LinearLayout
                     android:layout_width="150dp"
                     android:layout_height="150dp"
@@ -38,7 +32,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:foregroundGravity="center" />
+                        android:foregroundGravity="center"
+                        android:src="@drawable/user_image" />
 
                 </LinearLayout>
 
@@ -121,8 +116,9 @@
                 android:id="@+id/completeProjectList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_below="@+id/layout_already_listed_title"
-                tools:listitem="@layout/activity_list_item" />
+                tools:listitem="@layout/item_list_in_progress_projects" />
 
             <!--            <ListView-->
 <!--                android:id="@+id/projectList"-->

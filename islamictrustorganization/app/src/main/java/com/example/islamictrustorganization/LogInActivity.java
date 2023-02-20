@@ -1,5 +1,6 @@
 package com.example.islamictrustorganization;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,10 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         inital();
+
+        loginBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(LogInActivity.this , LandingActivity.class);
+        });
     }
 
     private void inital() {
