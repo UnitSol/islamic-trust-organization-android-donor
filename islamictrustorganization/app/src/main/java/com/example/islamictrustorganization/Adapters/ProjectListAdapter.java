@@ -29,6 +29,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
         this.arrProjectList = arrProjectList;
     }
 
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,7 +54,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrProjectList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -25,7 +25,8 @@ public class LogInActivity extends AppCompatActivity {
         inital();
 
         loginBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(LogInActivity.this , LandingActivity.class);
+            Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -25,7 +25,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
         projectPrize = findViewById(R.id.projectPrize);
         textStatus = findViewById(R.id.textStatus);
         textDescription = findViewById(R.id.textDescription);
-        textReadMore = findViewById(R.id.textReadMore);
+//        textReadMore = findViewById(R.id.textReadMore);
 
         projectImage = findViewById(R.id.projectImage);
         goBackBtn = findViewById(R.id.goBackBtn);
