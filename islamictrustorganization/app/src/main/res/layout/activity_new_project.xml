@@ -9,33 +9,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp">
-            <ImageView
-                android:id="@+id/backThroughBtn"
-                android:layout_width="100px"
-                android:layout_height="60px"
-                android:src="@drawable/go_back_botton"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:text="New Project"
-                android:fontFamily="sans-serif-black"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
-                android:textSize="20dp"/>
+            android:layout_height="60px"
+            android:text="New Project"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="39dp"
+            android:textSize="20sp"/>
 
-        </LinearLayout>
+        <!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginLeft="20dp">-->
+
+
+<!--        </LinearLayout>-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/newProjectList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_already_listed_title"
             tools:listitem="@layout/activity_list_item"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -1,65 +1,58 @@
 package com.example.islamictrustorganization.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.islamictrustorganization.Adapters.FragmentProjectListAdapter;
+import com.example.islamictrustorganization.Models.FragmentProjectListModel;
 import com.example.islamictrustorganization.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OnGoingProjectFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class OnGoingProjectFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public OnGoingProjectFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OnGoingProjectFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OnGoingProjectFragment newInstance(String param1, String param2) {
-        OnGoingProjectFragment fragment = new OnGoingProjectFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    View view;
+    RecyclerView rvOnGoingProjectList;
+    FragmentProjectListAdapter projectListAdapter;
+    ArrayList<FragmentProjectListModel> arrCompleteProjectList = new ArrayList<>();
+    Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_on_going_project, container, false);
+        view =  inflater.inflate(R.layout.fragment_on_going_project, container, false);
+        rvOnGoingProjectList = view.findViewById(R.id.on_going_project_fragment);
+
+        mContext = getContext();
+        FragmentProjectListModel fragmentProjectListModel = new FragmentProjectListModel();
+        fragmentProjectListModel.setProjectID(1);
+        fragmentProjectListModel.setProjectName("Project Name");
+        fragmentProjectListModel.setProjectCast("5873");
+        arrCompleteProjectList.add(fragmentProjectListModel);
+        fragmentProjectListModel.setProjectID(1);
+        fragmentProjectListModel.setProjectName("Project Name");
+        fragmentProjectListModel.setProjectCast("51113");
+        arrCompleteProjectList.add(fragmentProjectListModel);
+        fragmentProjectListModel.setProjectID(1);
+        fragmentProjectListModel.setProjectName("Project Name");
+        fragmentProjectListModel.setProjectCast("5883");
+        arrCompleteProjectList.add(fragmentProjectListModel);
+
+        displayData();
+
+        return view;
+    }
+    private void displayData() {
+        LinearLayoutManager outManager = new LinearLayoutManager(mContext);
+        projectListAdapter = new FragmentProjectListAdapter(mContext, arrCompleteProjectList);
+        rvOnGoingProjectList.setLayoutManager(new LinearLayoutManager(mContext));
+        rvOnGoingProjectList.setAdapter(projectListAdapter);
+
     }
 }

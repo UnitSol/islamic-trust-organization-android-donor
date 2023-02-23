@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
     tools:context=".Fragments.DashboardFragment">
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/dashboard_fragment_list"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       tools:listitem="@layout/li_dashboard_fragment_list"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboard_fragment_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        tools:listitem="@layout/li_dashboard_fragment_list"
+        />
 
 </FrameLayout>

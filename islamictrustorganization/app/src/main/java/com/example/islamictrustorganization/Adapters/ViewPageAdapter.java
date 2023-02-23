@@ -7,12 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.islamictrustorganization.Fragments.CompletedProjectFragment;
-import com.example.islamictrustorganization.Fragments.DashboardFragment;
-import com.example.islamictrustorganization.Fragments.OnGoingProjectFragment;
+import java.util.ArrayList;
 
 public class ViewPageAdapter extends FragmentStateAdapter {
 
+    private ArrayList<Fragment> fragments;
     public ViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -24,24 +23,19 @@ public class ViewPageAdapter extends FragmentStateAdapter {
     public ViewPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
+    public void setData(ArrayList<Fragment> fragments) {
+        this.fragments = fragments;
+    }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return new DashboardFragment();
-            case 1:
-                return new CompletedProjectFragment();
-            case 2:
-                return new OnGoingProjectFragment();
-            default:
-                return new DashboardFragment();
-        }
+        return fragments.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return fragments.size();
+
     }
 }

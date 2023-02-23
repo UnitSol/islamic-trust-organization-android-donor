@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.islamictrustorganization.Adapters.ProjectListAdapter;
-import com.example.islamictrustorganization.Models.ProjectListModel;
+import com.example.islamictrustorganization.Adapters.FragmentProjectListAdapter;
+import com.example.islamictrustorganization.Models.FragmentProjectListModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ public class LandingActivity extends AppCompatActivity {
     TextView userName, textDollarWallet, textCompletedProject, textInProgressProject;
     RecyclerView completeProjectList;
 
-    ProjectListAdapter projectListAdapter;
-    ArrayList<ProjectListModel> arrProjects = new ArrayList<>();
+    FragmentProjectListAdapter projectListAdapter;
+    ArrayList<FragmentProjectListModel> arrProjects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +30,28 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
         initalizing();
 
-        ProjectListModel projectListModel = new ProjectListModel();
+        FragmentProjectListModel projectListModel = new FragmentProjectListModel();
         projectListModel.setProjectID(1);
         projectListModel.setProjectName("Testing Model");
-        projectListModel.setProjectDonation("562452.00");
+        projectListModel.setProjectCast("562452.00");
         projectListModel.setImgProjectLogoURL("https://media.istockphoto.com/id/1297780288/photo/delivering-quality-construction-for-a-quality-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=Mdr_fFyIHi2jBYU2ns-Fs2JlYPk0QdP9oK3UW6jhayM=");
         arrProjects.add(projectListModel);
 
         projectListModel.setProjectID(1);
         projectListModel.setProjectName("Testing Model");
-        projectListModel.setProjectDonation("562452.00");
+        projectListModel.setProjectCast("562452.00");
         projectListModel.setImgProjectLogoURL("https://media.istockphoto.com/id/1297780288/photo/delivering-quality-construction-for-a-quality-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=Mdr_fFyIHi2jBYU2ns-Fs2JlYPk0QdP9oK3UW6jhayM=");
         arrProjects.add(projectListModel);
 
         projectListModel.setProjectID(1);
         projectListModel.setProjectName("Testing Model");
-        projectListModel.setProjectDonation("562452.00");
+        projectListModel.setProjectCast("562452.00");
         projectListModel.setImgProjectLogoURL("https://media.istockphoto.com/id/1297780288/photo/delivering-quality-construction-for-a-quality-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=Mdr_fFyIHi2jBYU2ns-Fs2JlYPk0QdP9oK3UW6jhayM=");
         arrProjects.add(projectListModel);
 
         projectListModel.setProjectID(1);
         projectListModel.setProjectName("Testing Model");
-        projectListModel.setProjectDonation("562452.00");
+        projectListModel.setProjectCast("562452.00");
         projectListModel.setImgProjectLogoURL("https://media.istockphoto.com/id/1297780288/photo/delivering-quality-construction-for-a-quality-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=Mdr_fFyIHi2jBYU2ns-Fs2JlYPk0QdP9oK3UW6jhayM=");
         arrProjects.add(projectListModel);
 
@@ -59,7 +59,7 @@ public class LandingActivity extends AppCompatActivity {
     }
     private void displayData(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        projectListAdapter = new ProjectListAdapter(this, arrProjects);
+        projectListAdapter = new FragmentProjectListAdapter(this, arrProjects);
         completeProjectList.setLayoutManager(layoutManager);
         completeProjectList.setAdapter(projectListAdapter);
     }

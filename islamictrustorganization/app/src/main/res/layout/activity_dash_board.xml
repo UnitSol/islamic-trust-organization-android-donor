@@ -1,77 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DashBoardActivity"
-    android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".DashBoardActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RelativeLayout
                 android:id="@+id/user_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/user_image_id"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@drawable/user_image"
-                    android:layout_marginTop="21dp"
-                    android:layout_marginLeft="15dp"/>
+                    android:layout_centerVertical="true"/>
 
                 <TextView
                     android:id="@+id/lbl_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="61dp"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/user_image_id"
+                    android:fontFamily="sans-serif-black"
                     android:text="Majid Khan"
-                    android:textSize="20dp"
                     android:textColor="@color/headingColor"
-                    android:fontFamily="sans-serif-black"/>
+                    android:textSize="20sp"
+                    android:textFontWeight="700"/>
 
             </RelativeLayout>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/user_info"
                 android:layout_marginTop="20dp"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/headingColor"
                 app:tabInlineLabel="true"
                 app:tabMode="scrollable"
-                app:tabIndicatorAnimationMode="elastic">
-                <com.google.android.material.tabs.TabItem
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Dashboard"
-                    />
-                <com.google.android.material.tabs.TabItem
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                app:tabTextAppearance="@style/MyCustomeTabText"
+                app:tabSelectedTextColor="@color/headingColor"/>
 
-                    android:text="Completed Project"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="On Going Projects"/>
 
-            </com.google.android.material.tabs.TabLayout>
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/tab_layout"/>
+
+
         </RelativeLayout>
     </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

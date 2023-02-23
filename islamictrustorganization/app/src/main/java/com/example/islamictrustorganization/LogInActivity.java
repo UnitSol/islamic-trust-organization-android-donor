@@ -2,6 +2,7 @@ package com.example.islamictrustorganization;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,17 +23,25 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        getSupportActionBar().hide();
         inital();
 
         loginBtn.setOnClickListener(view -> {
             Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
             startActivity(intent);
         });
+        textForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogInActivity.this , ForgetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void inital() {
-        loginEmail = findViewById(R.id.loginEmail);
-        loginPassword = findViewById(R.id.loginPassword);
+        loginEmail = findViewById(R.id.txt_email);
+        loginPassword = findViewById(R.id.txt_password);
 
         loginBtn = findViewById(R.id.loginBtn);
 
@@ -43,7 +52,7 @@ public class LogInActivity extends AppCompatActivity {
 //        googleLoginBtn = findViewById(R.id.googleLoginBtn);
 //        appleLoginBtn = findViewById(R.id.appleLoginBtn);
 
-        eyePasswordBtn = findViewById(R.id.eyePasswordBtn);
+//        eyePasswordBtn = findViewById(R.id.eyePasswordBtn);
 
     }
 }

@@ -8,8 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundLayout">#33C18341</color>
-    <color name="buttonColor">#3C56A2</color>
-    <color name="headingColor">#70A6ED</color>
+    <color name="buttonColor">
+        #24695C</color>
+    <color name="headingColor">
+        #24695C</color>
     <color name="editTextRadius">#C4C4C4</color>
     <color name="viewBackground">#F3E6D9</color>
 </resources>

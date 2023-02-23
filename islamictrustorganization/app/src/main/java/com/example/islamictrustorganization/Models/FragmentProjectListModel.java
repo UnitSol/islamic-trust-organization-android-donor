@@ -1,19 +1,19 @@
 package com.example.islamictrustorganization.Models;
 
-public class ProjectListModel {
+public class FragmentProjectListModel {
 
     private String imgProjectLogoURL;
     private String projectName;
-    private String projectDonation;
+    private String projectCast;
     private int projectID;
 
-    public ProjectListModel() {
+    public FragmentProjectListModel() {
     }
 
-    public ProjectListModel(String imgProjectLogoURL, String projectName, String projectCost, int projectID) {
+    public FragmentProjectListModel(String imgProjectLogoURL, String projectName, String projectCost, int projectID) {
         this.imgProjectLogoURL = imgProjectLogoURL;
         this.projectName = projectName;
-        this.projectDonation = projectCost;
+        this.projectCast = projectCost;
         this.projectID = projectID;
     }
 
@@ -33,12 +33,12 @@ public class ProjectListModel {
         this.projectName = projectName;
     }
 
-    public String getProjectDonation() {
-        return projectDonation;
+    public String getProjectCast() {
+        return projectCast;
     }
 
-    public void setProjectDonation(String projectCost) {
-        this.projectDonation = projectCost;
+    public void setProjectCast(String projectCost) {
+        this.projectCast = projectCost;
     }
 
     public int getProjectID() {

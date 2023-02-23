@@ -12,10 +12,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -49,49 +51,64 @@
             </RelativeLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="156dp"
+                android:layout_height="187dp"
                 android:layout_gravity="center"
                 android:src="@drawable/login_user" />
 
-            <EditText
-
-                android:id="@+id/loginEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="10dp"
-                android:paddingLeft="20px"
-                android:hint="Email"
-                android:background="@drawable/edittext_style"
-
-                />
-
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="48dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="10dp">
 
                 <EditText
-                    android:paddingStart="20px"
-                    android:background="@drawable/edittext_style"
-                    android:id="@+id/loginPassword"
+                    android:id="@+id/txt_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="25dp"
-                    android:hint="Password" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edittext_style"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp" />
 
-                <ImageView
-                    android:id="@+id/eyePasswordBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="30dp"
-                    android:src="@drawable/password_eye" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="25dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_txt_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="#7B6F72"
+                    app:hintEnabled="false"
+                    app:startIconTint="#7B6F72"
+                    tools:ignore="HardcodedText"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_password"
+                        android:paddingStart="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/edittext_style"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingTop="2dp"
+                        android:textColor="#ADA4A5"
+                        android:textColorHint="#ADA4A5"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
             </RelativeLayout>
 
             <Button
@@ -102,15 +119,18 @@
                 android:layout_marginRight="25dp"
                 android:background="@drawable/button_curve"
                 android:text="Login"
+                android:textAllCaps="false"
                 android:textColor="@color/white" />
+
             <TextView
                 android:id="@+id/textForgetPassword"
-                android:paddingTop="25px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:paddingTop="25px"
                 android:text="Forgot Password?"
-                android:textColor="@color/headingColor"/>
+                android:textColor="@color/headingColor" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
