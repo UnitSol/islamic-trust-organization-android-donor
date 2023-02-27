@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewProjectDetailActivity">
+    <RelativeLayout
+        android:id="@+id/project_detail_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_make_donation_project"
+            android:layout_width="match_parent"
+            android:layout_height="292dp"
+            android:src="@drawable/project_detail_image" />
+
+        <ImageView
+            android:id="@+id/go_back_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50px"
+            android:paddingTop="50dp"
+            android:src="@drawable/go_back_botton" />
+        <LinearLayout
+            android:id="@+id/layout_project_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/img_make_donation_project"
+            android:layout_marginTop="37dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="32dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lbl_project_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project Name"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textFontWeight="900"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/lbl_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_project_detail_name"
+                    android:text="Start Date : "
+                    android:textSize="12sp"
+                    android:textColor="#A9A9A9"/>
+                <TextView
+                    android:id="@+id/txt_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_project_detail_name"
+                    android:layout_toRightOf="@+id/lbl_start_date"
+                    android:text="06 Aug 2022"
+                    android:textSize="12sp"
+                    android:textColor="#A9A9A9"/>
+                <RelativeLayout
+                    android:layout_width="162dp"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_below="@+id/lbl_start_date"
+                    android:background="@drawable/textview_background"
+                    >
+                    <TextView
+                        android:id="@+id/lbl_expected_end_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expected End Date : "
+                        android:textSize="9sp"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="5dp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/txt_expected_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/lbl_expected_end_date"
+                        android:text="12 Jan 2023"
+                        android:textSize="9sp"
+                        android:paddingTop="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/txt_donation_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$3946"
+                    android:textColor="@color/headingColor"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="18sp"
+                    android:textFontWeight="900"
+                    android:layout_alignParentEnd="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_donation_amount"
+                    android:text="Total Donation"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/description_make_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. Nulla dictum nulla lectus, in rutrum metus euismod in. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ornare eros sit amet urna"
+            android:layout_below="@+id/layout_project_detail"
+            android:layout_marginTop="29dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="32dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"/>
+        <Button
+            android:id="@+id/make_donation_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_curve"
+            android:text="Make Donation"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="31dp"
+            android:layout_marginLeft="31dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

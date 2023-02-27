@@ -1,6 +1,8 @@
 package com.example.islamictrustorganization;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -15,6 +17,13 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forget_password);
         getSupportActionBar().hide();
         inital();
+        sendCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ForgetPasswordActivity.this,EmailVarificationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void inital() {

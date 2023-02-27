@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MakeDonationActivity">
+
+    <RelativeLayout
+        android:id="@+id/make_donation_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_make_donation_project"
+            android:layout_width="match_parent"
+            android:layout_height="292dp"
+            android:src="@drawable/project_detail_image" />
+
+        <ImageView
+            android:id="@+id/go_back_project_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50px"
+            android:paddingTop="50dp"
+            android:src="@drawable/go_back_botton" />
+
+        <LinearLayout
+            android:id="@+id/layout_project_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_make_donation_project"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="37dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lbl_project_donation_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Project Name"
+                    android:textColor="@color/black"
+                    android:textFontWeight="900"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lbl_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_project_donation_name"
+                    android:text="Start Date : "
+                    android:textColor="#A9A9A9"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_project_donation_name"
+                    android:layout_toRightOf="@+id/lbl_start_date"
+                    android:text="06 Aug 2022"
+                    android:textColor="#A9A9A9"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="162dp"
+                    android:layout_height="22dp"
+                    android:layout_below="@+id/lbl_start_date"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/textview_background">
+
+                    <TextView
+                        android:id="@+id/lbl_expected_end_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="5dp"
+                        android:text="Expected End Date : "
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/txt_expected_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/lbl_expected_end_date"
+                        android:paddingTop="5dp"
+                        android:text="12 Jan 2023"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_donation_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-black"
+                    android:text="$3946"
+                    android:textColor="@color/headingColor"
+                    android:textFontWeight="900"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_donation_amount"
+                    android:layout_alignParentEnd="true"
+                    android:text="Total Donation"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/lbl_donated_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter amount you want to donate for this project"
+            android:layout_below="@+id/layout_project_detail"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="49dp"
+            />
+        <EditText
+            android:id="@+id/txt_donation_amount"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/lbl_donated_amount"
+            android:background="@drawable/edittext_style"
+            android:hint="Donation Amount"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:paddingLeft="19dp"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Submit Your Donation"
+            android:textAllCaps="false"
+            android:background="@drawable/button_curve"
+            android:layout_marginLeft="31dp"
+            android:layout_marginRight="31dp"/>
+    </RelativeLayout>
+</RelativeLayout>

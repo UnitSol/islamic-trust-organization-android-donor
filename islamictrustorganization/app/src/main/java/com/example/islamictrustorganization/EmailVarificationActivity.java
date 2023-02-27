@@ -1,6 +1,8 @@
 package com.example.islamictrustorganization;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,6 +18,13 @@ public class EmailVarificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_varification);
         initalizing();
+        verifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EmailVarificationActivity.this , NewPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initalizing() {
