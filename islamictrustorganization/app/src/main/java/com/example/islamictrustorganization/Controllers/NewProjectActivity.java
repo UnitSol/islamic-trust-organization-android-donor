@@ -1,4 +1,4 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.islamictrustorganization.Adapters.FragmentProjectListAdapter;
 import com.example.islamictrustorganization.Models.FragmentProjectListModel;
+import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

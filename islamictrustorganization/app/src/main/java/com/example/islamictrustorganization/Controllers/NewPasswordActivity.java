@@ -1,4 +1,4 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.islamictrustorganization.R;
 
 public class NewPasswordActivity extends AppCompatActivity {
     EditText setNewPassword, newConfirmPassword;

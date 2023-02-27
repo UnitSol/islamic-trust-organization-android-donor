@@ -1,4 +1,4 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.islamictrustorganization.R;
 
 public class NewProjectDetailActivity extends AppCompatActivity {
     ImageView imgMakeDonationProject , goBackProject;

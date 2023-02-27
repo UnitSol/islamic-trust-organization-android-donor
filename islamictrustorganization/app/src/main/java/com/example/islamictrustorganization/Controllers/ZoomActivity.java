@@ -1,8 +1,10 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.islamictrustorganization.R;
 
 public class ZoomActivity extends AppCompatActivity {
 

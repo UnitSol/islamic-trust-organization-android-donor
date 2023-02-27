@@ -1,4 +1,4 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.islamictrustorganization.R;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     TextView projectName , textStartDate , textEndDate , projectPrize ,textStatus , textDescription , textReadMore;

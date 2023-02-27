@@ -1,4 +1,4 @@
-package com.example.islamictrustorganization;
+package com.example.islamictrustorganization.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
 import com.example.islamictrustorganization.Fragments.CompletedProjectFragment;
 import com.example.islamictrustorganization.Fragments.DashboardFragment;
 import com.example.islamictrustorganization.Fragments.OnGoingProjectFragment;
+import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
