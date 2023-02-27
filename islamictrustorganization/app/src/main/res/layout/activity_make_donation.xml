@@ -137,7 +137,7 @@
             android:layout_marginTop="49dp"
             />
         <EditText
-            android:id="@+id/txt_donation_amount"
+            android:id="@+id/txt_donated_amount"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@+id/lbl_donated_amount"
