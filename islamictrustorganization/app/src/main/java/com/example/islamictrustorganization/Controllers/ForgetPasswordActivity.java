@@ -39,6 +39,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         txtForgotPasswordEmail = findViewById(R.id.txt_forgot_password_email);
         cmdSendResetPasswordCode = findViewById(R.id.cmd_send_reset_password_code);
 
+        txtForgotPasswordEmail.setText("hajiusm281@gmail.com");
+
         cmdSendResetPasswordCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,24 +57,20 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         mapParams.put("email", txtForgotPasswordEmail.getText().toString());
 
         try {
-
             ServiceManager serviceManager = new ServiceManager();
-
             serviceManager.apiCaller(EndPoints.kSendResetPasswordCode, mapParams, ForgetPasswordActivity.this, new APIResponse() {
                 @Override
                 public void onSuccess(JSONObject response) {
                     Log.d("API", "Success API ==== "+ response.toString());
-
+                    LoadingDialog.getInstance().dismiss();
+                    Intent intent = new Intent(ForgetPasswordActivity.this,EmailVarificationActivity.class);
+                    startActivity(intent);
                 }
-
                 @Override
                 public void onError(String error) {
-
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== "+ error);
                 }
-
-
                 @Override
                 public void onStart() {
                     Log.d("API", "Started Calling API");
@@ -80,7 +78,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             });
             //Toast.makeText(TestAPIActivity.this, "POST API called", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-
+            LoadingDialog.getInstance().dismiss();
             e.printStackTrace();
         }
     }

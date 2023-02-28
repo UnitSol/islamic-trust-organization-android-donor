@@ -79,16 +79,14 @@ public class LogInActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(JSONObject response) {
                     Log.d("API", "Success API ==== "+ response.toString());
-
                 }
 
                 @Override
                 public void onError(String error) {
-
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== "+ error);
                 }
-                
+
                 @Override
                 public void onStart() {
                     Log.d("API", "Started Calling API");
@@ -96,7 +94,6 @@ public class LogInActivity extends AppCompatActivity {
             });
             //Toast.makeText(TestAPIActivity.this, "POST API called", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }

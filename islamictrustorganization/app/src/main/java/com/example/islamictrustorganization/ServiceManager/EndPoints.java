@@ -9,9 +9,9 @@ public class EndPoints {
     public static final String kLogin = BaseAuthURL + "donor_login";
 
     // [@Start Password Reset]
-    public static final String kSendResetPasswordCode = BaseURL + "send_password_reset_code";
-    public static final String kValidateResetPasswordCode = BaseURL + "validate_reset_code";
-    public static final String kUpdatePassword = BaseURL + "update_password";
+    public static final String kSendResetPasswordCode = BaseAuthURL + "send_password_reset_code";
+    public static final String kValidateResetPasswordCode = BaseAuthURL + "validate_reset_code";
+    public static final String kUpdatePassword = BaseAuthURL + "update_password";
     // [@End Password Reset]
 
     public static final String KGetDashboardDetail = BaseURL + "dashboard_detail";
