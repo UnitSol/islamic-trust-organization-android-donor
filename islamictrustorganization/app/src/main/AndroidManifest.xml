@@ -68,7 +68,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.EmailVarificationActivity"
+            android:name=".Controllers.EmailVerificationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

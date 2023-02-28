@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.R;
@@ -44,8 +45,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         cmdSendResetPasswordCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(ForgetPasswordActivity.this,EmailVarificationActivity.class);
-                //startActivity(intent);
                 apiCallSendResetPasswordCode();
             }
         });
@@ -56,6 +55,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         Map<String, String> mapParams = new HashMap<>();
         mapParams.put("email", txtForgotPasswordEmail.getText().toString());
 
+        BaseClass.userEmail = txtForgotPasswordEmail.getText().toString();
+
         try {
             ServiceManager serviceManager = new ServiceManager();
             serviceManager.apiCaller(EndPoints.kSendResetPasswordCode, mapParams, ForgetPasswordActivity.this, new APIResponse() {
@@ -63,7 +64,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 public void onSuccess(JSONObject response) {
                     Log.d("API", "Success API ==== "+ response.toString());
                     LoadingDialog.getInstance().dismiss();
-                    Intent intent = new Intent(ForgetPasswordActivity.this,EmailVarificationActivity.class);
+                    Intent intent = new Intent(ForgetPasswordActivity.this,EmailVerificationActivity.class);
                     startActivity(intent);
                 }
                 @Override
