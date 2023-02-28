@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,6 @@ import com.example.islamictrustorganization.R;
 import com.example.islamictrustorganization.ServiceManager.EndPoints;
 import com.example.islamictrustorganization.ServiceManager.ServiceManager;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -40,7 +40,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         txtForgotPasswordEmail = findViewById(R.id.txt_forgot_password_email);
         cmdSendResetPasswordCode = findViewById(R.id.cmd_send_reset_password_code);
 
-        txtForgotPasswordEmail.setText("hajiusm281@gmail.com");
+        txtForgotPasswordEmail.setText("alirazachohan018@gmail.com");
 
         cmdSendResetPasswordCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 public void onError(String error) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== "+ error);
+                    Toast.makeText(ForgetPasswordActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onStart() {

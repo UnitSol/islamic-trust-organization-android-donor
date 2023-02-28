@@ -12,28 +12,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.islamictrustorganization.Controllers.ProjectDetailActivity;
+import com.bumptech.glide.Glide;
+import com.example.islamictrustorganization.Controllers.NewProjectDetailActivity;
 import com.example.islamictrustorganization.Models.FragmentProjectListModel;
 import com.example.islamictrustorganization.R;
 
 import java.util.ArrayList;
 
-public class FragmentProjectListAdapter extends RecyclerView.Adapter<FragmentProjectListAdapter.ViewHolder> {
-
+public class NewProjectAdapter extends RecyclerView.Adapter<NewProjectAdapter.ViewHolder> {
     Context mContext;
-    ArrayList<FragmentProjectListModel> arrProjectList;
 
-    public FragmentProjectListAdapter(Context context, ArrayList<FragmentProjectListModel> arrProjectList) {
-        this.mContext = context;
+    public NewProjectAdapter(Context mContext, ArrayList<FragmentProjectListModel> arrProjectList) {
+        this.mContext = mContext;
         this.arrProjectList = arrProjectList;
     }
 
+    ArrayList<FragmentProjectListModel> arrProjectList;
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_in_progress_projects, parent, false);
-        return new FragmentProjectListAdapter.ViewHolder(view);
+        return new NewProjectAdapter.ViewHolder(view);
 
     }
 
@@ -42,12 +42,11 @@ public class FragmentProjectListAdapter extends RecyclerView.Adapter<FragmentPro
         FragmentProjectListModel projectListModel = arrProjectList.get(position);
         holder.lblProjectName.setText(projectListModel.getProjectName());
         holder.lblProjectCast.setText(projectListModel.getProjectCast());
-//        Glide.with(context).load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
+        Glide.with(mContext).load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
         holder.cmdProject.setOnClickListener(view->{
-            Intent intent = new Intent(mContext, ProjectDetailActivity.class);
+            Intent intent = new Intent(mContext, NewProjectDetailActivity.class);
             mContext.startActivity(intent);
         });
-
 
     }
 

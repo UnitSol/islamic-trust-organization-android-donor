@@ -29,32 +29,35 @@ public class DashboardFragment extends Fragment {
         //thisContext = container.getContext();
         view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         rvDashboardList = (RecyclerView) view.findViewById(R.id.dashboard_fragment_list);
-        DashboardListModel dashboardListModel ;
-        dashboardListModel = new DashboardListModel();
+        DashboardListModel dashboardListModel = new DashboardListModel();
         dashboardListModel.setItemID(1);
-        dashboardListModel.setTotalFund("01245");
+        dashboardListModel.setTotalFund("Fund");
         dashboardListModel.setGetTotalFund("14");
         arrDashBoardList.add(dashboardListModel);
+
+        dashboardListModel = new DashboardListModel();
         dashboardListModel.setItemID(1);
-        dashboardListModel.setTotalFund("1447");
+        dashboardListModel.setTotalFund("Fund");
         dashboardListModel.setGetTotalFund("12");
         arrDashBoardList.add(dashboardListModel);
+
+        dashboardListModel = new DashboardListModel();
         dashboardListModel.setItemID(1);
-        dashboardListModel.setTotalFund("258");
+        dashboardListModel.setTotalFund("fund");
         dashboardListModel.setGetTotalFund("1");
         arrDashBoardList.add(dashboardListModel);
-        dashboardListModel.setItemID(1);
-        dashboardListModel.setTotalFund("258");
-        dashboardListModel.setGetTotalFund("18");
-        arrDashBoardList.add(dashboardListModel);
+//        dashboardListModel.setItemID(4);
+//        dashboardListModel.setTotalFund("258");
+//        dashboardListModel.setGetTotalFund("18");
+//        arrDashBoardList.add(dashboardListModel);
         displayData();
         return view;
     }
 
     private void displayData() {
-        LinearLayoutManager outManager = new LinearLayoutManager(thisContext);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(thisContext);
         dashboardListAdapter = new DashboardListAdapter(thisContext, arrDashBoardList);
-        rvDashboardList.setLayoutManager(new LinearLayoutManager(thisContext));
+        rvDashboardList.setLayoutManager(layoutManager);
         rvDashboardList.setAdapter(dashboardListAdapter);
 
     }

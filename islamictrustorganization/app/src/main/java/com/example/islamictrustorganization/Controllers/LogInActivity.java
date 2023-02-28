@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,7 +77,10 @@ public class LogInActivity extends AppCompatActivity {
             serviceManager.apiCaller(EndPoints.kLogin, mapParams, LogInActivity.this, new APIResponse() {
                 @Override
                 public void onSuccess(JSONObject response) {
+                    LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Success API ==== "+ response.toString());
+                    Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override

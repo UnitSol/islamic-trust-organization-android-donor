@@ -61,6 +61,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Controllers.MakeDonationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Controllers.LandingActivity"
             android:exported="false">
             <meta-data
