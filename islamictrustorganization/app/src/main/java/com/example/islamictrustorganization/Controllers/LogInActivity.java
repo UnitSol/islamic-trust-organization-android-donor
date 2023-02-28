@@ -44,7 +44,7 @@ public class LogInActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txt_password);
 
         txtEmail.setText("hajiusm281@gmail.com");
-        txtPassword.setText("passwor");
+        txtPassword.setText("password");
 
         cmdLogin = findViewById(R.id.loginBtn);
         cmdLogin.setOnClickListener(view -> {
@@ -88,8 +88,7 @@ public class LogInActivity extends AppCompatActivity {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== "+ error);
                 }
-
-
+                
                 @Override
                 public void onStart() {
                     Log.d("API", "Started Calling API");

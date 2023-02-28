@@ -3,10 +3,10 @@ package com.example.islamictrustorganization.ServiceManager;
 public class EndPoints {
 
     public static final String BaseURL = "https://islamic-trust.bhattimobiles.com/api/donor/";
-    public static final String kMediaBaseURL = "https://admin.spareskit.com/storage/app/public/request/";
+    public static final String BaseAuthURL = "https://islamic-trust.bhattimobiles.com/api/";
 
     // [USER MANAGEMENT]
-    public static final String kLogin = BaseURL + "donor_login";
+    public static final String kLogin = BaseAuthURL + "donor_login";
 
     // [@Start Password Reset]
     public static final String kSendResetPasswordCode = BaseURL + "send_password_reset_code";

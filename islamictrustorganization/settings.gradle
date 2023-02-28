@@ -36,5 +36,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SparesKit"
+rootProject.name = "ITO Donor"
 include ':app'
