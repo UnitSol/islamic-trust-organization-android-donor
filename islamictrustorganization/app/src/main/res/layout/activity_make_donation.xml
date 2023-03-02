@@ -11,11 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.smarteist.autoimageslider.SliderView
             android:id="@+id/img_make_donation_project"
             android:layout_width="match_parent"
             android:layout_height="292dp"
-            android:src="@drawable/project_detail_image" />
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="@color/headingColor"
+            app:sliderIndicatorUnselectedColor="#5A5A"
+            app:sliderScrollTimeInSec="2"
+            app:sliderStartAutoCycle="true" />
 
         <ImageView
             android:id="@+id/go_back_project_detail"
@@ -59,7 +71,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txt_start_date"
+                    android:id="@+id/txt_make_donation_start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lbl_project_donation_name"
@@ -86,7 +98,7 @@
                         android:textSize="9sp" />
 
                     <TextView
-                        android:id="@+id/txt_expected_date"
+                        android:id="@+id/txt_make_donation_expected_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/lbl_expected_end_date"
@@ -104,7 +116,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txt_donation_amount"
+                    android:id="@+id/txt_make_donation_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -137,7 +149,7 @@
             android:layout_marginTop="49dp"
             />
         <EditText
-            android:id="@+id/txt_donated_amount"
+            android:id="@+id/edtxt_donated_amount"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@+id/lbl_donated_amount"
@@ -150,6 +162,7 @@
             android:layout_marginTop="20dp"
             />
         <Button
+            android:id="@+id/btn_add_donation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

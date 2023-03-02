@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.R;
 import com.example.islamictrustorganization.ServiceManager.EndPoints;
 import com.example.islamictrustorganization.ServiceManager.ServiceManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -79,6 +81,12 @@ public class LogInActivity extends AppCompatActivity {
                 public void onSuccess(JSONObject response) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Success API ==== "+ response.toString());
+                    try {
+                        JSONObject dictUser = response.getJSONObject("data");
+                        BaseClass.userID = String.valueOf(dictUser.getInt("id"));
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                     Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
                     startActivity(intent);
                 }
