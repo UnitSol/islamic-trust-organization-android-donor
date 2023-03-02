@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Controllers.ProjectDetailActivity;
 import com.example.islamictrustorganization.Models.FragmentProjectListModel;
 import com.example.islamictrustorganization.R;
@@ -39,11 +41,13 @@ public class FragmentProjectListAdapter extends RecyclerView.Adapter<FragmentPro
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        mContext = holder.itemView.getContext();
         FragmentProjectListModel projectListModel = arrProjectList.get(position);
         holder.lblProjectName.setText(projectListModel.getProjectName());
         holder.lblProjectCast.setText(projectListModel.getProjectCast());
-//        Glide.with(context).load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
+        Glide.with(mContext).load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
         holder.cmdProject.setOnClickListener(view->{
+            BaseClass.selectedProjectID = String.valueOf(projectListModel.getProjectID());
             Intent intent = new Intent(mContext, ProjectDetailActivity.class);
             mContext.startActivity(intent);
         });

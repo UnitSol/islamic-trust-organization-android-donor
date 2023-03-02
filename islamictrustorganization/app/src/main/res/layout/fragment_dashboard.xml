@@ -1,18 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     tools:context=".Fragments.DashboardFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dashboard_fragment_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        tools:listitem="@layout/li_dashboard_fragment_list"
-        />
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginRight="10dp"
+           android:layout_marginLeft="10dp">
+           <RelativeLayout
+               android:id="@+id/cel_total_fund"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:layout_marginStart="0dp"
+               android:layout_marginTop="0dp"
+               android:layout_marginEnd="0dp"
+               android:layout_marginBottom="0dp"
+               android:background="@drawable/edittext_style"
+               android:backgroundTint="#BA895D">
 
-</FrameLayout>
+               <ImageView
+                   android:id="@+id/img_dashboard_project_description"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="10dp"
+                   android:src="@drawable/dashboard_main_fund_icon" />
+
+               <TextView
+                   android:id="@+id/lbl_total_fund"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="35dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_toRightOf="@+id/img_dashboard_project_description"
+                   android:fontFamily="sans-serif-black"
+                   android:text="Total Fund"
+                   android:textColor="@color/white"
+                   android:textSize="14dp" />
+
+               <TextView
+                   android:id="@+id/lbl_amount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/lbl_total_fund"
+                   android:layout_marginLeft="35dp"
+                   android:layout_toRightOf="@+id/img_dashboard_project_description"
+                   android:fontFamily="sans-serif-black"
+                   android:text="04"
+                   android:textColor="@color/white"
+                   android:textSize="40dp" />
+
+               <ImageView
+
+                   android:id="@+id/img_project_corner_image"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="-14dp"
+                   android:src="@drawable/dashboard_side_fund_icon" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/cel_remaining_fund"
+               android:layout_below="@+id/cel_total_fund"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:layout_marginStart="0dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="0dp"
+               android:layout_marginBottom="0dp"
+               android:background="@drawable/edittext_style"
+               android:backgroundTint="#BA895D"
+               >
+
+               <ImageView
+                   android:id="@+id/img_remaining_fund"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="10dp"
+                   android:src="@drawable/dashboard_main_remaining_fund_icon" />
+
+               <TextView
+                   android:id="@+id/lbl_remaing_fund"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="35dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_toRightOf="@+id/img_remaining_fund"
+                   android:fontFamily="sans-serif-black"
+                   android:text="Remaining Funds"
+                   android:textColor="@color/white"
+                   android:textSize="14dp" />
+
+               <TextView
+                   android:id="@+id/lbl_remaining_amount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/lbl_remaing_fund"
+                   android:layout_marginLeft="35dp"
+                   android:layout_toRightOf="@+id/img_remaining_fund"
+                   android:fontFamily="sans-serif-black"
+                   android:text="04"
+                   android:textColor="@color/white"
+                   android:textSize="40dp" />
+
+               <ImageView
+
+                   android:id="@+id/img_remaining_fund_corner_image"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="-14dp"
+                   android:src="@drawable/dashboard_side_remaining_fund_icon" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/cel_ongoing_project"
+               android:layout_below="@+id/cel_remaining_fund"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:layout_marginStart="0dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="0dp"
+               android:layout_marginBottom="0dp"
+               android:background="@drawable/edittext_style"
+               android:backgroundTint="@color/buttonColor"
+               >
+
+               <ImageView
+                   android:id="@+id/img_ongoing_project"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="10dp"
+                   android:src="@drawable/dashboard_ongoing_main_icon" />
+
+               <TextView
+                   android:id="@+id/lbl_onGoing_project"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="35dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_toRightOf="@+id/img_ongoing_project"
+                   android:fontFamily="sans-serif-black"
+                   android:text="On Going Project"
+                   android:textColor="@color/white"
+                   android:textSize="14dp" />
+
+               <TextView
+                   android:id="@+id/lbl_ongoing_project_amount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/lbl_onGoing_project"
+                   android:layout_marginLeft="35dp"
+                   android:layout_toRightOf="@+id/img_ongoing_project"
+                   android:fontFamily="sans-serif-black"
+                   android:text="04"
+                   android:textColor="@color/white"
+                   android:textSize="40dp" />
+
+               <ImageView
+
+                   android:id="@+id/img_ongoing_project_corner_image"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="-14dp"
+                   android:src="@drawable/dashboard_ongoing_side_icon" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/cel_completed_project"
+               android:layout_below="@+id/cel_ongoing_project"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:layout_marginStart="0dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="0dp"
+               android:layout_marginBottom="0dp"
+               android:background="@drawable/edittext_style"
+               android:backgroundTint="@color/buttonColor"
+               >
+
+               <ImageView
+                   android:id="@+id/img_complete_project"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="10dp"
+                   android:src="@drawable/dashboard_completed_mainn_icon" />
+
+               <TextView
+                   android:id="@+id/lbl_complete_project"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="35dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_toRightOf="@+id/img_complete_project"
+                   android:fontFamily="sans-serif-black"
+                   android:text="Completed Projects"
+                   android:textColor="@color/white"
+                   android:textSize="14dp" />
+
+               <TextView
+                   android:id="@+id/lbl_complete_project_amount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/lbl_complete_project"
+                   android:layout_marginLeft="35dp"
+                   android:layout_toRightOf="@+id/img_complete_project"
+                   android:fontFamily="sans-serif-black"
+                   android:text="04"
+                   android:textColor="@color/white"
+                   android:textSize="40dp" />
+
+               <ImageView
+
+                   android:id="@+id/img_complete_project_corner_image"
+                   android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="-14dp"
+                   android:src="@drawable/dashboard_completed_side_icon" />
+           </RelativeLayout>
+
+       </RelativeLayout>
+   </ScrollView>
+
+
+</RelativeLayout>
