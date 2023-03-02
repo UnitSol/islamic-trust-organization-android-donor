@@ -28,6 +28,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/in_progress_project_icon"
                 app:shapeAppearance="@style/Circular" />
 
@@ -57,7 +58,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Donation : "
+                    android:text="Budget : "
                     android:textColor="@color/black" />
 
                 <TextView

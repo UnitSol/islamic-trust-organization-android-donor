@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.islamictrustorganization.Adapters.NewProjectAdapter;
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.Models.FragmentProjectListModel;

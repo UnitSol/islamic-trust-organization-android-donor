@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Controllers.NewProjectDetailActivity;
 import com.example.islamictrustorganization.Models.FragmentProjectListModel;
 import com.example.islamictrustorganization.R;
@@ -22,12 +23,12 @@ import java.util.ArrayList;
 public class NewProjectAdapter extends RecyclerView.Adapter<NewProjectAdapter.ViewHolder> {
     Context mContext;
 
+    ArrayList<FragmentProjectListModel> arrProjectList;
+
     public NewProjectAdapter(Context mContext, ArrayList<FragmentProjectListModel> arrProjectList) {
         this.mContext = mContext;
         this.arrProjectList = arrProjectList;
     }
-
-    ArrayList<FragmentProjectListModel> arrProjectList;
 
     @NonNull
     @Override
@@ -42,8 +43,11 @@ public class NewProjectAdapter extends RecyclerView.Adapter<NewProjectAdapter.Vi
         FragmentProjectListModel projectListModel = arrProjectList.get(position);
         holder.lblProjectName.setText(projectListModel.getProjectName());
         holder.lblProjectCast.setText(projectListModel.getProjectCast());
-        Glide.with(mContext).load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
+        Glide.with(mContext).asBitmap().load(projectListModel.getImgProjectLogoURL()).into(holder.imgProjectLogo);
+
         holder.cmdProject.setOnClickListener(view->{
+
+            BaseClass.selectedProjectID = String.valueOf(projectListModel.getProjectID());
             Intent intent = new Intent(mContext, NewProjectDetailActivity.class);
             mContext.startActivity(intent);
         });
