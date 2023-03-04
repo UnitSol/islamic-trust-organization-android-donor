@@ -135,11 +135,11 @@ public class NewProjectActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
-//                case R.id.menu_buyer_order_piece:
-//                    startActivity(new Intent(getApplicationContext(), BuyerOrderPieceActivity.class));
-//                    overridePendingTransition(0, 0);
-//                    finish();
-//                    return true;
+                case R.id.menu_donner_more:
+                    startActivity(new Intent(getApplicationContext(), MoreActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
 //                case R.id.menu_buyer_orders:
 //                    startActivity(new Intent(getApplicationContext(), BuyerOrdersActivity.class));
 //                    overridePendingTransition(0, 0);

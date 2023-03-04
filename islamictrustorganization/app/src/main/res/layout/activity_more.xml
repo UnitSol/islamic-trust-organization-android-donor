@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controllers.MoreActivity">
+
+    <TextView
+        android:id="@+id/lbl_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginLeft="46dp"
+        android:fontFamily="sans-serif-black"
+        android:text="More"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/cmd_profile"
+        android:layout_width="360dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/lbl_more"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:background="@drawable/edittext_style">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="26dp"
+            android:layout_height="28.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_more_profile" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/img_profile"
+            android:text="Profile"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cmd_initiate_Project"
+        android:layout_width="360dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/cmd_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/edittext_style">
+
+        <ImageView
+            android:id="@+id/img_initiate_project"
+            android:layout_width="26dp"
+            android:layout_height="28.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_more_initiative" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/img_initiate_project"
+            android:text="Initiate Project"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cmd_privacy_policy"
+        android:layout_width="360dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/cmd_initiate_Project"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/edittext_style">
+
+        <ImageView
+            android:id="@+id/img_privacy_policy"
+            android:layout_width="26dp"
+            android:layout_height="28.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_more_privacy_policy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/img_privacy_policy"
+            android:text="Privacy Policy"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cmd_about_us"
+        android:layout_width="360dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/cmd_privacy_policy"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/edittext_style">
+
+        <ImageView
+            android:id="@+id/img_about_us"
+            android:layout_width="26dp"
+            android:layout_height="28.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_more_about_us" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/img_about_us"
+            android:text="About Us"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/cmd_log_out"
+        android:layout_width="360dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/cmd_about_us"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/edittext_style">
+
+        <ImageView
+            android:id="@+id/img_log_out"
+            android:layout_width="26dp"
+            android:layout_height="28.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_more_log_out" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/img_log_out"
+            android:text="Logout"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
