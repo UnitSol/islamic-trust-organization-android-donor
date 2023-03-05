@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.islamictrustorganization.R;
 
 public class MoreActivity extends AppCompatActivity {
-    RelativeLayout cmdLogOut;
+    RelativeLayout cmdLogOut , cmdProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +26,18 @@ public class MoreActivity extends AppCompatActivity {
 
             }
         });
+        cmdProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MoreActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initalUI() {
         cmdLogOut = findViewById(R.id.cmd_log_out);
+        cmdProfile = findViewById(R.id.cmd_profile);
     }
+
 }
