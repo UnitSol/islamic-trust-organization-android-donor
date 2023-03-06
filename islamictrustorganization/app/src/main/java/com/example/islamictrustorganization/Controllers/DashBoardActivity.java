@@ -39,7 +39,7 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
         titles.add("Completed Project");
         titles.add("On Going Project");
         setViewPageAdapter();
-        new TabLayoutMediator(tabLayout , viewPager , (TabLayoutMediator.TabConfigurationStrategy)this).attach();
+        new TabLayoutMediator(tabLayout , viewPager , this).attach();
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override
 //            public void onTabSelected(TabLayout.Tab tab) {
