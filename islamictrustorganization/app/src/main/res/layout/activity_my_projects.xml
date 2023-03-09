@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    tools:context=".Controllers.DashBoardActivity">
+
+    tools:context=".Controllers.MyProjectsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,7 +21,7 @@
             <RelativeLayout
                 android:id="@+id/user_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="5dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -50,28 +51,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/user_info">
-
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
                     app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorColor="@color/headingColor"
                     app:tabInlineLabel="true"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextAppearance="@style/MyCustomeTabText" />
+                    app:tabMode="scrollable"
+                    app:tabTextAppearance="@style/MyCustomeTabText"
+                    app:tabSelectedTextColor="@color/headingColor"/>
 
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/view_pager"
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/tab_layout"
-                    android:layout_marginTop="13dp"
-                    android:scrollbars="vertical"/>
-            </RelativeLayout>
+                    android:layout_below="@+id/tab_layout"/>
 
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>

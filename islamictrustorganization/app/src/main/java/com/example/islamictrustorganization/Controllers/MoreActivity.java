@@ -51,7 +51,7 @@ public class MoreActivity extends AppCompatActivity {
                     finish();
                     return true;
                 case R.id.menu_donner_new_projects:
-                    startActivity(new Intent(getApplicationContext(), NewProjectActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MyProjectsActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;

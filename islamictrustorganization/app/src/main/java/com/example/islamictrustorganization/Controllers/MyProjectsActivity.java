@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
-import com.example.islamictrustorganization.Fragments.DashboardFragment;
+import com.example.islamictrustorganization.Fragments.CompletedProjectFragment;
+import com.example.islamictrustorganization.Fragments.OnGoingProjectFragment;
 import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -19,23 +20,23 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
-public class DashBoardActivity extends AppCompatActivity implements TabLayoutMediator.TabConfigurationStrategy {
+public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMediator.TabConfigurationStrategy {
     ImageView userImageId;
     TextView lblUserName;
     BottomNavigationView bottomNavigationView;
     TabLayout tabLayout;
     ViewPager2 viewPager;
     ArrayList<String> titles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash_board);
+        setContentView(R.layout.activity_my_projects);
         getSupportActionBar().hide();
         initUI();
-//        titles = new ArrayList<String>();
-//        titles.add("Dashboard");
-//        titles.add("Completed Project");
-//        titles.add("On Going Project");
+        titles = new ArrayList<String>();
+        titles.add("Completed Project");
+        titles.add("On Going Project");
         setViewPageAdapter();
         new TabLayoutMediator(tabLayout , viewPager , this).attach();
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -67,18 +68,18 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.menu_donner_dashboard);
+        bottomNavigationView.setSelectedItemId(R.id.menu_donner_new_projects);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_donner_dashboard:
-//                    startActivity(new Intent(getApplicationContext(), LandingActivity.class));
-//                    overridePendingTransition(0, 0);
-//                    finish();
-                    return true;
-                case R.id.menu_donner_new_projects:
-                    startActivity(new Intent(getApplicationContext(), MyProjectsActivity.class));
+                    startActivity(new Intent(getApplicationContext(), DashBoardActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
+                    return true;
+                case R.id.menu_donner_new_projects:
+//                    startActivity(new Intent(getApplicationContext(), NewProjectActivity.class));
+//                    overridePendingTransition(0, 0);
+//                    finish();
                     return true;
                 case R.id.menu_donner_more:
                     startActivity(new Intent(getApplicationContext(), MoreActivity.class));
@@ -99,9 +100,9 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
     public void setViewPageAdapter(){
         ViewPageAdapter viewPageAdapter1 = new ViewPageAdapter(this);
         ArrayList<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new DashboardFragment());
-//        fragmentList.add(new CompletedProjectFragment());
-//        fragmentList.add(new OnGoingProjectFragment());
+//        fragmentList.add(new DashboardFragment());
+        fragmentList.add(new CompletedProjectFragment());
+        fragmentList.add(new OnGoingProjectFragment());
         viewPageAdapter1.setData(fragmentList);
         viewPager.setAdapter(viewPageAdapter1);
 
@@ -109,6 +110,7 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
 
     @Override
     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-//        tab.setText(titles.get(position));
+        tab.setText(titles.get(position));
     }
+
 }
