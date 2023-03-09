@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.DashboardFragment;
 import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,7 +65,7 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
         viewPager = findViewById(R.id.view_pager);
 //        viewPageAdapter = new ViewPageAdapter(this);
 //        viewPager.setAdapter(viewPageAdapter);
-
+        lblUserName.setText(BaseClass.userName);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.menu_donner_dashboard);

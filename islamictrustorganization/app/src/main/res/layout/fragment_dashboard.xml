@@ -53,7 +53,7 @@
                    android:layout_marginLeft="35dp"
                    android:layout_toRightOf="@+id/img_dashboard_project_description"
                    android:fontFamily="sans-serif-black"
-                   android:text="04"
+                   android:text="00"
                    android:textColor="@color/white"
                    android:textSize="40dp" />
 
@@ -108,7 +108,7 @@
                    android:layout_marginLeft="35dp"
                    android:layout_toRightOf="@+id/img_remaining_fund"
                    android:fontFamily="sans-serif-black"
-                   android:text="04"
+                   android:text="00"
                    android:textColor="@color/white"
                    android:textSize="40dp" />
 
@@ -163,7 +163,7 @@
                    android:layout_marginLeft="35dp"
                    android:layout_toRightOf="@+id/img_ongoing_project"
                    android:fontFamily="sans-serif-black"
-                   android:text="04"
+                   android:text="00"
                    android:textColor="@color/white"
                    android:textSize="40dp" />
 
@@ -218,7 +218,7 @@
                    android:layout_marginLeft="35dp"
                    android:layout_toRightOf="@+id/img_complete_project"
                    android:fontFamily="sans-serif-black"
-                   android:text="04"
+                   android:text="00"
                    android:textColor="@color/white"
                    android:textSize="40dp" />
 

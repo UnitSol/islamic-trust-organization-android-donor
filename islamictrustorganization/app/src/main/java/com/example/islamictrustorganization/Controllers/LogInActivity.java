@@ -84,9 +84,13 @@ public class LogInActivity extends AppCompatActivity {
                     try {
                         JSONObject dictUser = response.getJSONObject("data");
                         BaseClass.userID = String.valueOf(dictUser.getInt("id"));
+                        BaseClass.userName = dictUser.getString("name");
+
+
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
+
                     Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
                     startActivity(intent);
                 }
