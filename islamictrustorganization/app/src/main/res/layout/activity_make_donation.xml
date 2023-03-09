@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_donation_amount"
+                    android:layout_below="@+id/txt_make_donation_amount"
                     android:layout_alignParentEnd="true"
                     android:text="Total Donation"
                     android:textColor="@color/black"
@@ -159,6 +159,7 @@
             android:layout_marginLeft="35dp"
             android:paddingLeft="19dp"
             android:textSize="14sp"
+            android:inputType="numberDecimal"
             android:layout_marginTop="20dp"
             />
         <Button
@@ -170,6 +171,7 @@
             android:textAllCaps="false"
             android:background="@drawable/button_curve"
             android:layout_marginLeft="31dp"
-            android:layout_marginRight="31dp"/>
+            android:layout_marginRight="31dp"
+            android:textColor="@color/white"/>
     </RelativeLayout>
 </RelativeLayout>
