@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.islamictrustorganization.Adapters.SliderAdapter;
+import com.example.islamictrustorganization.Adapters.UpdateProjectDetailAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.Models.SliderModel;
+import com.example.islamictrustorganization.Models.UpdateProjectDetailModel;
 import com.example.islamictrustorganization.R;
 import com.example.islamictrustorganization.ServiceManager.EndPoints;
 import com.example.islamictrustorganization.ServiceManager.ServiceManager;
@@ -34,6 +36,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
     RecyclerView updateProjectList;
     SliderView imgCompleteProjectDetail;
     SliderAdapter sliderAdapter;
+    UpdateProjectDetailAdapter newProjectAdapter;
+    ArrayList<UpdateProjectDetailModel> arrUpdateProjects = new ArrayList<>();
 
     List<SliderModel> projectDetailSliderItem = new ArrayList<>();
 
@@ -44,6 +48,19 @@ public class ProjectDetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         initializing();
         apiCallingProjectDetail();
+        UpdateProjectDetailModel projectListModel = new UpdateProjectDetailModel();
+        projectListModel.setUpdateID(1);
+        projectListModel.setUpdateName("Update Name");
+        projectListModel.setUpdateDate("9 feb 23");
+        arrUpdateProjects.add(projectListModel);
+        displayListData();
+    }
+
+    private void displayListData() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        newProjectAdapter = new UpdateProjectDetailAdapter(this, arrUpdateProjects);
+        updateProjectList.setLayoutManager(layoutManager);
+        updateProjectList.setAdapter(newProjectAdapter);
     }
 
     private void apiCallingProjectDetail() {

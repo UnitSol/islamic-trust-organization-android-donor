@@ -9,7 +9,7 @@
     <item
         android:id="@+id/menu_donner_new_projects"
         android:icon="@drawable/new_project"
-        android:title="New Project"
+        android:title="My Project"
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/menu_donner_more"
