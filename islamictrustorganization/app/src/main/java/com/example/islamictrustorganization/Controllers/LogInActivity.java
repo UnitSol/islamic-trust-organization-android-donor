@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.islamictrustorganization.BaseClass;
+import com.example.islamictrustorganization.Helpers.UserHelper;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.R;
@@ -87,6 +88,7 @@ public class LogInActivity extends AppCompatActivity {
                         BaseClass.userName = dictUser.getString("name");
 
 
+                        UserHelper.setLoggedInUserData(LogInActivity.this,dictUser.toString());
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }

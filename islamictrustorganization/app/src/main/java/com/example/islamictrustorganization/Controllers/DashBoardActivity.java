@@ -1,7 +1,10 @@
 package com.example.islamictrustorganization.Controllers;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,10 +16,15 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.DashboardFragment;
+import com.example.islamictrustorganization.Helpers.UserHelper;
+import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
 import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -27,12 +35,28 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
     TabLayout tabLayout;
     ViewPager2 viewPager;
     ArrayList<String> titles;
+
+    private BroadcastReceiver didProfileUpdate = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("NotificationCenter", "City Selected");
+            try {
+                JSONObject dictUser = new JSONObject(UserHelper.getLoggedInUserData(DashBoardActivity.this));
+                Log.d("TAG", "onReceive: " + dictUser.getString("name"));
+                lblUserName.setText(dictUser.getString("name"));
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         getSupportActionBar().hide();
         initUI();
+
+        NotificationCenter.addObserver(DashBoardActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED , didProfileUpdate);
 //        titles = new ArrayList<String>();
 //        titles.add("Dashboard");
 //        titles.add("Completed Project");
@@ -67,6 +91,7 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
 //        viewPager.setAdapter(viewPageAdapter);
         lblUserName.setText(BaseClass.userName);
 
+
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.menu_donner_dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -84,7 +109,7 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
                 case R.id.menu_donner_more:
                     startActivity(new Intent(getApplicationContext(), MoreActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
+                    //finish();
                     return true;
 //                case R.id.menu_buyer_orders:
 //                    startActivity(new Intent(getApplicationContext(), BuyerOrdersActivity.class));
