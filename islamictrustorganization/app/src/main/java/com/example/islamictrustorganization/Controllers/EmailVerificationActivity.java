@@ -99,7 +99,6 @@ public class EmailVerificationActivity extends AppCompatActivity {
         });
 
 
-
         viewResendCode = findViewById(R.id.view_resend_code);
         viewResendCode.setVisibility(View.GONE);
         viewResendCode.setOnClickListener(view -> {
