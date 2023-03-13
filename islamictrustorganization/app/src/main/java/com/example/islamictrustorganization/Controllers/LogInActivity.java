@@ -108,7 +108,7 @@ public class LogInActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(LogInActivity.this, DashBoardActivity.class);
                             startActivity(intent);
-
+                            finish();
 
                             LoadingDialog.getInstance().dismiss();
 
