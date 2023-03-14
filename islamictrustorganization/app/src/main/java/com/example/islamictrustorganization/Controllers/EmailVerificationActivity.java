@@ -1,5 +1,7 @@
 package com.example.islamictrustorganization.Controllers;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,6 +25,7 @@ import com.example.islamictrustorganization.R;
 import com.example.islamictrustorganization.ServiceManager.EndPoints;
 import com.example.islamictrustorganization.ServiceManager.ServiceManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -120,9 +123,9 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
     private void apiCallSendResetPasswordCodeAgain() {
         LoadingDialog.getInstance().show(this);
+
         Map<String, String> mapParams = new HashMap<>();
         mapParams.put("email", BaseClass.userEmail);
-
         viewResendCode.setVisibility(View.GONE);
 
         try {
@@ -139,6 +142,17 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 public void onError(String error) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== " + error);
+                    if(error != null) {
+                        try {
+                            JSONObject dictError = new JSONObject(error);
+                            Toast.makeText(EmailVerificationActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    else{
+                        Toast.makeText(EmailVerificationActivity.this, "Please connect the internet", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -154,6 +168,15 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
     private void apiCallVerifyCode() {
         LoadingDialog.getInstance().show(this);
+        if (inputOne.getText().length() == 0) {
+            displayAlert("Error", "Please enter code.");
+        } else if (inputTwo.getText().length() == 0) {
+            displayAlert("Error", "Please enter code.");
+        }else if (inputThree.getText().length() == 0) {
+            displayAlert("Error", "Please enter code.");
+        }else if (inputFour.getText().length() == 0) {
+            displayAlert("Error", "Please enter code.");
+        }
         Map<String, String> mapParams = new HashMap<>();
         mapParams.put("code", inputOne.getText().toString() + "" + inputTwo.getText().toString() + "" + inputThree.getText().toString() + "" + inputFour.getText().toString());
 
@@ -175,8 +198,18 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 public void onError(String error) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== " + error);
-                }
+                    if (error != null) {
+                        try {
+                            JSONObject dictError = new JSONObject(error);
+                            Toast.makeText(EmailVerificationActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        Toast.makeText(EmailVerificationActivity.this, "Please Turn On Internet", Toast.LENGTH_LONG).show();
+                    }
 
+                }
                 @Override
                 public void onStart() {
                     Log.d("API", "Started Calling API");
@@ -204,5 +237,17 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 viewResendCode.setVisibility(View.VISIBLE);
             }
         }.start();
+    }
+    public void displayAlert(String title, String body) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(body)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+
+                    }
+                }).show();
     }
 }

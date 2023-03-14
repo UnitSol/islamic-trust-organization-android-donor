@@ -3,14 +3,24 @@ package com.example.islamictrustorganization.Models;
 public class UpdateProjectDetailModel {
     private String updateName;
     private String updateDate;
+    private String updateDescription;
     private int updateID;
 
     public UpdateProjectDetailModel() {
     }
 
-    public UpdateProjectDetailModel(String updateName, String updateDate, int updateID) {
+    public String getUpdateDescription() {
+        return updateDescription;
+    }
+
+    public void setUpdateDescription(String updateDescription) {
+        this.updateDescription = updateDescription;
+    }
+
+    public UpdateProjectDetailModel(String updateName, String updateDate, String updateDescription, int updateID) {
         this.updateName = updateName;
         this.updateDate = updateDate;
+        this.updateDescription = updateDescription;
         this.updateID = updateID;
     }
 

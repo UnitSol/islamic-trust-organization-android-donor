@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Controllers.ProjectDetailStepOneActivity;
 import com.example.islamictrustorganization.Models.UpdateProjectDetailModel;
 import com.example.islamictrustorganization.R;
@@ -41,7 +42,10 @@ public class UpdateProjectDetailAdapter extends RecyclerView.Adapter<UpdateProje
         holder.lblDate.setText(projectListModel.getUpdateDate());
         holder.cmdProject.setOnClickListener(view->{
 
-//            BaseClass.selectedProjectID = String.valueOf(projectListModel.getUpdateID());
+            BaseClass.selectedUpdateProjectID = String.valueOf(projectListModel.getUpdateID());
+            BaseClass.selectedUpdateProjectName = String.valueOf(projectListModel.getUpdateName());
+            BaseClass.selectedUpdateProjectDate = String.valueOf(projectListModel.getUpdateDate());
+            BaseClass.selectedUpdateProjectDescription = String.valueOf(projectListModel.getUpdateDescription());
             Intent intent = new Intent(context, ProjectDetailStepOneActivity.class);
             context.startActivity(intent);
         });

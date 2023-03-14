@@ -1,6 +1,8 @@
 package com.example.islamictrustorganization.Controllers;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserProfileActivity extends AppCompatActivity {
     ImageView goToMore , imgUserProfile;
@@ -66,7 +70,20 @@ public class UserProfileActivity extends AppCompatActivity {
         btnSubmitInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiCallingUserProfileUpdate();
+                if (txtProfileUserEmail.getText().length() == 0) {
+                    displayAlert("Error", "Please enter your email id.");
+                } else if (isEmailValid(txtProfileUserEmail.getText().toString()) == false) {
+                    displayAlert("Error", "Please enter a valid email id.");
+                } else if (txtProfileUserName.getText().length() == 0) {
+                    displayAlert("Error", "Please enter your password");
+                } else if (txtProfileUserAdress.getText().length() == 0) {
+                    displayAlert("Error", "Please enter your Address");
+                }else if (txtProfileUserPhone.getText().length() == 0) {
+                    displayAlert("Error", "Please enter your Mobile Number");
+                }else {
+
+                    apiCallingUserProfileUpdate();
+                }
             }
         });
     }
@@ -161,5 +178,31 @@ public class UserProfileActivity extends AppCompatActivity {
         txtProfileUserAdress = findViewById(R.id.txt_profile_user_adress);
 
         btnSubmitInfo = findViewById(R.id.btn_submit_info);
+    }
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public void displayAlert(String title, String body) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(body)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+
+                    }
+                }).show();
     }
 }

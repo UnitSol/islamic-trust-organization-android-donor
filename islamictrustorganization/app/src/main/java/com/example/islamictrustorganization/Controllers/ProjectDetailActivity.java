@@ -48,12 +48,54 @@ public class ProjectDetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         initializing();
         apiCallingProjectDetail();
-        UpdateProjectDetailModel projectListModel = new UpdateProjectDetailModel();
-        projectListModel.setUpdateID(1);
-        projectListModel.setUpdateName("Update Name");
-        projectListModel.setUpdateDate("9 feb 23");
-        arrUpdateProjects.add(projectListModel);
-        displayListData();
+        apiCallingProjectUpdateList();
+
+    }
+
+    private void apiCallingProjectUpdateList() {
+        LoadingDialog.getInstance().show(this);
+        Map<String, String> mapParam = new HashMap<>();
+        mapParam.put("project_id", BaseClass.selectedProjectID);
+        try {
+            ServiceManager serviceManager = new ServiceManager();
+            serviceManager.apiCaller(EndPoints.kGetProjectUpdate, mapParam, ProjectDetailActivity.this, new APIResponse() {
+                @Override
+                public void onSuccess(JSONObject response) {
+                    Log.d("API", "Success API ==== " + response.toString());
+                    try {
+                        JSONArray arrProjectUpdateDetail = response.getJSONArray("data");
+                        for(int i = 0 ; i<arrProjectUpdateDetail.length() ; i++){
+                            JSONObject dictUpdateList = arrProjectUpdateDetail.getJSONObject(i);
+                            UpdateProjectDetailModel projectListModel = new UpdateProjectDetailModel();
+
+                            projectListModel.setUpdateID(dictUpdateList.getInt("id"));
+                            projectListModel.setUpdateName(dictUpdateList.getString("name"));
+                            projectListModel.setUpdateDate(dictUpdateList.getString("created_at"));
+                            projectListModel.setUpdateDescription(dictUpdateList.getString("description"));
+                            arrUpdateProjects.add(projectListModel);
+                            displayListData();
+                        }
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    LoadingDialog.getInstance().dismiss();
+                }
+
+                @Override
+                public void onError(String error) {
+                    LoadingDialog.getInstance().dismiss();
+                    Log.d("API", "Error API ==== " + error);
+                }
+
+                @Override
+                public void onStart() {
+                    Log.d("API", "Started Calling API");
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void displayListData() {
@@ -75,6 +117,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
                     Log.d("API", "Success API ==== " + response.toString());
                     try {
                         JSONObject dictNEwProjectDetail = response.getJSONObject("data");
+                        BaseClass.selectedProjectName = dictNEwProjectDetail.getString("name");
                         projectName.setText(dictNEwProjectDetail.getString("name"));
                         textStartDate.setText(dictNEwProjectDetail.getString("start_date"));
                         textEndDate.setText(dictNEwProjectDetail.getString("end_date"));

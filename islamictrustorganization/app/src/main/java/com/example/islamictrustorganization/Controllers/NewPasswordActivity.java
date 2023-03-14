@@ -1,5 +1,7 @@
 package com.example.islamictrustorganization.Controllers;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +20,7 @@ import com.example.islamictrustorganization.R;
 import com.example.islamictrustorganization.ServiceManager.EndPoints;
 import com.example.islamictrustorganization.ServiceManager.ServiceManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -37,11 +41,29 @@ public class NewPasswordActivity extends AppCompatActivity {
         confirmpasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (setNewPassword.getText().length() == 0) {
+                    displayAlert("Error", "Please complete the all field");
+                } else if (newConfirmPassword.getText().length() == 0) {
+                    displayAlert("Error", "Please complete the all field");
+                } else if (setNewPassword.getText().toString() != newConfirmPassword.getText().toString()) {
+
+                }
                 apiCallUpdatePassword();
             }
         });
     }
+    public void displayAlert(String title, String body) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(body)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
 
+                    }
+                }).show();
+    }
     private void apiCallUpdatePassword() {
         LoadingDialog.getInstance().show(this);
 
@@ -57,6 +79,7 @@ public class NewPasswordActivity extends AppCompatActivity {
                     LoadingDialog.getInstance().dismiss();
                     Intent intent = new Intent(NewPasswordActivity.this , LogInActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
 
@@ -64,6 +87,16 @@ public class NewPasswordActivity extends AppCompatActivity {
                 public void onError(String error) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== " + error);
+                    if(error != null){
+                        try {
+                            JSONObject dictError = new JSONObject(error);
+                            Toast.makeText(NewPasswordActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else{
+                        Toast.makeText(NewPasswordActivity.this, "Please Turn On Internet", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 @Override

@@ -18,6 +18,8 @@ public class EndPoints {
 
     // [@Start Password Reset]
     public static final String kGetProjects = BaseURL + "get_projects";
+    public static final String kGetProjectUpdate = BaseURL + "get_project_update";
+    public static final String kGetProjectUpdateDoc = BaseURL + "get_project_doc";
     public static final String kGetCompletedProjects = BaseURL + "get_complete_projects";
     public static final String kGetOnGoingProjects = BaseURL + "get_on_going_projects";
     public static final String kGetProjectDetail = BaseURL + "get_project_detail";
