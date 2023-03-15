@@ -7,7 +7,7 @@
     tools:context=".Controllers.ProjectDetailActivity">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="50px"
-                    android:paddingTop="50dp"
+                    android:paddingTop="30dp"
                     android:src="@drawable/go_back_botton" />
 
             </RelativeLayout>
@@ -48,9 +48,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="41px"
-                android:layout_marginTop="37dp"
-                android:layout_marginRight="31dp"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
                 >
 
                 <LinearLayout
@@ -89,6 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:gravity="right"
                     android:layout_alignParentRight="true">
                     <TextView
                         android:id="@+id/projectPrize"
@@ -110,15 +111,20 @@
                 </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:layout_width="212dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/textview_background"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -135,30 +141,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp">
+                    android:layout_alignParentRight="true">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Status : "
+                        android:textSize="11sp"
                         android:textColor="#444444" />
 
                     <TextView
                         android:id="@+id/textStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="In Progress" />
+                        android:text="In Progress"
+                        android:textSize="11sp"/>
                 </LinearLayout>
 
             </RelativeLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="29dp"
-                android:layout_marginLeft="41px"
-                android:layout_marginRight="32dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp">
 
 
                 <TextView
@@ -167,14 +174,14 @@
                     android:layout_height="wrap_content"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. "/>
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5pt"
-                android:background="@color/editTextRadius"
-
-                android:layout_marginTop="41dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"/>
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/editTextRadius" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,13 +190,13 @@
                 android:textFontWeight="900"
                 android:textSize="18dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="35dp"/>
+                android:layout_marginTop="20dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/updateProjectList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="31dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/layout_already_listed_title"
                 tools:listitem="@layout/update_list_item" />

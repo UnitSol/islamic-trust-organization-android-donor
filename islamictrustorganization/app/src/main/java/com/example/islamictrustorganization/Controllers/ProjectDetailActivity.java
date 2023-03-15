@@ -140,6 +140,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
                             imgCompleteProjectDetail.setAutoCycle(true);
                             imgCompleteProjectDetail.startAutoCycle();
                             imgCompleteProjectDetail.setScrollTimeInSec(3);
+
                         }
 
                     } catch (JSONException e) {
