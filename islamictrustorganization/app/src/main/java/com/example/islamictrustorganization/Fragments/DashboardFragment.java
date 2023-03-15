@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
@@ -26,7 +27,7 @@ public class DashboardFragment extends Fragment {
     View view;
     TextView lblAmount , lblRemainingAmount , lblOngoingProjectAmount , lblCompleteProjectAmount;
     Context thisContext;
-
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +38,20 @@ public class DashboardFragment extends Fragment {
         lblRemainingAmount = (TextView) view.findViewById(R.id.lbl_remaining_amount);
         lblOngoingProjectAmount = (TextView) view.findViewById(R.id.lbl_ongoing_project_amount);
         lblCompleteProjectAmount = (TextView) view.findViewById(R.id.lbl_complete_project_amount);
-        apiCallingDashboardFragment();
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
+
+
+        apiCallDashboardFragment();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                apiCallDashboardFragment();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
 //        DashboardListModel dashboardListModel = new DashboardListModel();
 //        dashboardListModel.setItemID(1);
 //        dashboardListModel.setTotalFund("Fund");
@@ -63,7 +77,7 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
-    private void apiCallingDashboardFragment() {
+    private void apiCallDashboardFragment() {
         LoadingDialog.getInstance().show(thisContext);
         Map<String, String> mapParam = new HashMap<>();
         mapParam.put("user_id" , BaseClass.userID);

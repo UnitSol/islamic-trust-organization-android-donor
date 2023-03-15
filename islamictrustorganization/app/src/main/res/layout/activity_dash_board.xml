@@ -4,81 +4,274 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
     tools:context=".Controllers.DashBoardActivity">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/user_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_image_id"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/user_image" />
+
+        <TextView
+            android:id="@+id/lbl_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/user_image_id"
+            android:fontFamily="sans-serif-black"
+            android:text="Majid Khan"
+            android:textColor="@color/headingColor"
+            android:textFontWeight="700"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_below="@+id/user_info"
+        android:layout_margin="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <RelativeLayout
-                android:id="@+id/user_info"
+                android:id="@+id/cel_total_fund"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_height="100dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/edittext_style"
+                android:backgroundTint="#BA895D">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/user_image_id"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
+                <ImageView
+                    android:id="@+id/img_dashboard_project_description"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/user_image"
-                    android:layout_centerVertical="true"/>
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dashboard_main_fund_icon" />
 
                 <TextView
-                    android:id="@+id/lbl_user_name"
+                    android:id="@+id/lbl_total_fund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/user_image_id"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/img_dashboard_project_description"
                     android:fontFamily="sans-serif-black"
-                    android:text="Majid Khan"
-                    android:textColor="@color/headingColor"
-                    android:textSize="20sp"
-                    android:textFontWeight="700"/>
+                    android:text="Total Fund"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
 
+                <TextView
+                    android:id="@+id/lbl_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_total_fund"
+                    android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@+id/img_dashboard_project_description"
+                    android:fontFamily="sans-serif-black"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
+
+                <ImageView
+
+                    android:id="@+id/img_project_corner_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="-14dp"
+                    android:src="@drawable/dashboard_side_fund_icon" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/cel_remaining_fund"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/user_info">
+                android:layout_height="100dp"
+                android:layout_below="@+id/cel_total_fund"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/edittext_style"
+                android:backgroundTint="#BA895D">
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/img_remaining_fund"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dashboard_main_remaining_fund_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_remaing_fund"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/white"
-                    app:tabInlineLabel="true"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextAppearance="@style/MyCustomeTabText" />
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/img_remaining_fund"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Remaining Funds"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lbl_remaining_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_remaing_fund"
+                    android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@+id/img_remaining_fund"
+                    android:fontFamily="sans-serif-black"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tab_layout"
-        android:layout_marginTop="13dp"
-        android:scrollbars="horizontal"/>
-</ScrollView>
+                <ImageView
+
+                    android:id="@+id/img_remaining_fund_corner_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="-14dp"
+                    android:src="@drawable/dashboard_side_remaining_fund_icon" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/cel_ongoing_project"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/cel_remaining_fund"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/edittext_style"
+                android:backgroundTint="@color/buttonColor">
+
+                <ImageView
+                    android:id="@+id/img_ongoing_project"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dashboard_ongoing_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_onGoing_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/img_ongoing_project"
+                    android:fontFamily="sans-serif-black"
+                    android:text="On Going Project"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/lbl_ongoing_project_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_onGoing_project"
+                    android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@+id/img_ongoing_project"
+                    android:fontFamily="sans-serif-black"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
+
+                <ImageView
+
+                    android:id="@+id/img_ongoing_project_corner_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="-14dp"
+                    android:src="@drawable/dashboard_ongoing_side_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cel_completed_project"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/cel_ongoing_project"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/edittext_style"
+                android:backgroundTint="@color/buttonColor">
+
+                <ImageView
+                    android:id="@+id/img_complete_project"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dashboard_completed_mainn_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_complete_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/img_complete_project"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Completed Projects"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/lbl_complete_project_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_complete_project"
+                    android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@+id/img_complete_project"
+                    android:fontFamily="sans-serif-black"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
+
+                <ImageView
+
+                    android:id="@+id/img_complete_project_corner_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="-14dp"
+                    android:src="@drawable/dashboard_completed_side_icon" />
+            </RelativeLayout>
 
         </RelativeLayout>
-    </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

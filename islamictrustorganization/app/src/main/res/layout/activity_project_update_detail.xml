@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.ProjectDetailStepOneActivity">
+    tools:context=".Controllers.ProjectUpdateDetailActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,17 +12,19 @@
         >
         <ImageView
             android:id="@+id/projectDetailGoBackBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
+
             android:src="@drawable/go_back_botton"/>
         <TextView
             android:id="@+id/projectHeading"
-            android:layout_marginTop="35dp"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="project name"
             android:textAllCaps="true"
             android:layout_below="@+id/projectDetailGoBackBtn"
@@ -36,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clouser of the build site"
-            android:textAllCaps="true"
+
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -44,9 +46,12 @@
         <TextView
             android:id="@+id/projectDate"
             android:layout_below="@+id/projectNameSubHeading"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="10sp"
             android:text="02 AUGUST 2019"/>
         <TextView
             android:id="@+id/projectDescription"
@@ -54,8 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="10sp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ante ligula, quis tincidunt ex bibendum et. Duis volutpat in diam non lacinia. Cras facilisis tincidunt risus eget sollicitudin. Nulla facilisi. Suspendisse nec suscipit nulla. Nulla facilisi. Sed sagittis vulputate magna. Nulla dictum nulla lectus."
             android:textAlignment="viewStart"/>
 
@@ -64,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/projectDescription"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="10dp"
             tools:listitem="@layout/li_project_detail_image"/>
     </RelativeLayout>
 

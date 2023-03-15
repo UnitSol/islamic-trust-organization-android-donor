@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProjectDetailStepOneActivity extends AppCompatActivity {
+public class ProjectUpdateDetailActivity extends AppCompatActivity {
     TextView projectHeading , projectNameSubHeading , projectDate , projectDescription;
     ImageView projectDetailGoBackBtn;
     RecyclerView imageList;
@@ -39,7 +39,7 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_detail_step_one);
+        setContentView(R.layout.activity_project_update_detail);
         getSupportActionBar().hide();
         initializing();
         apiCallingUpdateDetail();
@@ -68,7 +68,7 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
         mapParam.put("project_update_id", BaseClass.selectedUpdateProjectID);
         try {
             ServiceManager serviceManager = new ServiceManager();
-            serviceManager.apiCaller(EndPoints.kGetProjectUpdateDoc, mapParam, ProjectDetailStepOneActivity.this, new APIResponse() {
+            serviceManager.apiCaller(EndPoints.kGetProjectUpdateDoc, mapParam, ProjectUpdateDetailActivity.this, new APIResponse() {
                 @Override
                 public void onSuccess(JSONObject response) {
                     Log.d("API", "Success API ==== " + response.toString());
@@ -76,12 +76,15 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
                         JSONArray arrProjectUpdateImg = response.getJSONArray("data");
                         for (int i = 0 ; i < arrProjectUpdateImg.length() ; i++){
                             JSONObject dictImg = arrProjectUpdateImg.getJSONObject(i);
+
+                            Log.e("Update", "Project Update ==== "+ dictImg);
+
                             gridViewImageModel = new GridViewImageModel();
                             gridViewImageModel.setImgID(dictImg.getInt("id"));
-                            if(dictImg.getString("image") != null) {
+                            if(!dictImg.isNull("image") && dictImg.isNull("video") ) {
                                 gridViewImageModel.setImgURL(dictImg.getString("image"));
                                 gridViewImageModel.setFlagIsVideo(false);
-                            }else{
+                            }else if(dictImg.isNull("image") && !dictImg.isNull("video") ) {
                                 gridViewImageModel.setImgURL(dictImg.getString("video"));
                                 gridViewImageModel.setFlagIsVideo(true);
                             }
@@ -111,7 +114,7 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
     }
 
     private void displayData() {
-        gridLayout = new GridLayoutManager(ProjectDetailStepOneActivity.this , 2);
+        gridLayout = new GridLayoutManager(ProjectUpdateDetailActivity.this , 2);
         imageList.setLayoutManager(gridLayout);
         gridViewImageAdapter = new GridViewImageAdapter(this, imgUpdateDetail);
         imageList.setAdapter(gridViewImageAdapter);

@@ -7,7 +7,9 @@
     tools:context=".Controllers.UserProfileActivity">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_update_profile"
+        android:layout_marginBottom="20dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -41,15 +43,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cmd_go_to_more">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_user_profile"
-                    android:layout_width="171dp"
-                    android:layout_height="171dp"
-                    android:src="@drawable/user_image"
-                    style="@style/Circular"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="62dp"
-                    android:scaleType="fitXY"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="80dp"
+                    android:layout_centerHorizontal="true">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_user_profile"
+                        style="@style/Circular"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/user_image" />
+                </androidx.cardview.widget.CardView>
+
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/cmd_profile_user_name"
@@ -173,17 +180,22 @@
                     android:paddingLeft="19dp"
                     android:textColor="@color/black"/>
             </RelativeLayout>
-            <Button
-                android:id="@+id/btn_submit_info"
-                android:layout_width="367dp"
-                android:layout_height="46dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/button_curve"
-                android:text="Edit Profile"
-                android:textColor="@color/white"
-                android:layout_marginTop="71dp"
-                android:layout_below="@id/cmd_profile_user_adress"
-                android:layout_alignParentBottom="true"/>
+
         </RelativeLayout>
     </ScrollView>
+    <RelativeLayout
+        android:id="@+id/view_update_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp">
+        <Button
+            android:id="@+id/btn_submit_info"
+            android:layout_width="367dp"
+            android:layout_height="46dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_curve"
+            android:text="Edit Profile"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Controllers.ZoomActivity;
 import com.example.islamictrustorganization.Models.GridViewImageModel;
@@ -45,43 +46,14 @@ public class GridViewImageAdapter extends RecyclerView.Adapter<GridViewImageAdap
         GridViewImageModel gridViewImageModel = arrUpdateProjectImg.get(position);
 
         if (gridViewImageModel.isFlagIsVideo() == true) {
-            Log.d("TAG", "onBindViewHolder: Video is comming");
+            Log.d("Update", "Video URL ===== "+ gridViewImageModel.getImgURL());
             String serverVideoPath = gridViewImageModel.getImgURL();
 
-// create a new thread to avoid blocking the UI thread
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        // create a MediaMetadataRetriever object
-                        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            RequestOptions options = new RequestOptions().frame(2000);
+            Glide.with(context).load(serverVideoPath).apply(options).into(holder.imgUpdateProjectDetail);
 
-                        // set the data source to the server video path
-                        retriever.setDataSource(serverVideoPath, new HashMap<String, String>());
-
-                        // get the thumbnail bitmap
-                        Bitmap thumbnail = retriever.getFrameAtTime(2);
-
-                        // do something with the thumbnail bitmap, such as displaying it in an ImageView
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-//                                ImageView thumbnailImageView = findViewById(R.id.thumbnailImageView);
-//                                thumbnailImageView.setImageBitmap(thumbnail);0
-                                holder.imgUpdateProjectDetail.setImageBitmap(thumbnail);
-                            }
-                        });
-
-                        // release the MediaMetadataRetriever object
-                        retriever.release();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
         }else {
-            Log.d("TAG", "onBindViewHolder: Image is comming");
+            Log.d("Update", "Image URL ===== "+ gridViewImageModel.getImgURL());
             Glide.with(context).asBitmap().load(gridViewImageModel.getImgURL()).into(holder.imgUpdateProjectDetail);
         }
 

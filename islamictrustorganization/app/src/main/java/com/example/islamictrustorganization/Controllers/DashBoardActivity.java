@@ -11,14 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.DashboardFragment;
 import com.example.islamictrustorganization.Helpers.UserHelper;
+import com.example.islamictrustorganization.Interfaces.APIResponse;
+import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
 import com.example.islamictrustorganization.R;
+import com.example.islamictrustorganization.ServiceManager.EndPoints;
+import com.example.islamictrustorganization.ServiceManager.ServiceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -27,8 +32,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class DashBoardActivity extends AppCompatActivity implements TabLayoutMediator.TabConfigurationStrategy {
+public class DashBoardActivity extends AppCompatActivity {
     ImageView userImageId;
     TextView lblUserName;
     BottomNavigationView bottomNavigationView;
@@ -36,6 +43,9 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
     ViewPager2 viewPager;
     ArrayList<String> titles;
 
+    TextView lblAmount , lblRemainingAmount , lblOngoingProjectAmount , lblCompleteProjectAmount;
+
+    SwipeRefreshLayout swipeRefreshLayout;
     private BroadcastReceiver didProfileUpdate = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -56,40 +66,32 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
         getSupportActionBar().hide();
         initUI();
 
+        apiCallGetDashboardData();
+
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                apiCallGetDashboardData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         NotificationCenter.addObserver(DashBoardActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED , didProfileUpdate);
-//        titles = new ArrayList<String>();
-//        titles.add("Dashboard");
-//        titles.add("Completed Project");
-//        titles.add("On Going Project");
-        setViewPageAdapter();
-        new TabLayoutMediator(tabLayout , viewPager , this).attach();
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                viewPager.setCurrentItem(tab.getPosition());
-//                tabLayout.getTabAt(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
     }
 
     private void initUI() {
         userImageId = findViewById(R.id.user_image_id);
         lblUserName = findViewById(R.id.lbl_user_name);
-        tabLayout = findViewById(R.id.tab_layout);
-        viewPager = findViewById(R.id.view_pager);
-//        viewPageAdapter = new ViewPageAdapter(this);
-//        viewPager.setAdapter(viewPageAdapter);
+
         lblUserName.setText(BaseClass.userName);
+
+
+        lblAmount = findViewById(R.id.lbl_amount);
+        lblRemainingAmount = findViewById(R.id.lbl_remaining_amount);
+        lblOngoingProjectAmount = findViewById(R.id.lbl_ongoing_project_amount);
+        lblCompleteProjectAmount = findViewById(R.id.lbl_complete_project_amount);
+
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -122,19 +124,42 @@ public class DashBoardActivity extends AppCompatActivity implements TabLayoutMed
             return false;
         });
     }
-    public void setViewPageAdapter(){
-        ViewPageAdapter viewPageAdapter1 = new ViewPageAdapter(this);
-        ArrayList<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new DashboardFragment());
-//        fragmentList.add(new CompletedProjectFragment());
-//        fragmentList.add(new OnGoingProjectFragment());
-        viewPageAdapter1.setData(fragmentList);
-        viewPager.setAdapter(viewPageAdapter1);
 
+
+    private void apiCallGetDashboardData() {
+        LoadingDialog.getInstance().show(this);
+        Map<String, String> mapParam = new HashMap<>();
+        mapParam.put("user_id" , BaseClass.userID);
+        try {
+            ServiceManager serviceManager = new ServiceManager();
+            serviceManager.apiCaller(EndPoints.KGetDashboardDetail, mapParam, this, new APIResponse() {
+                @Override
+                public void onSuccess(JSONObject response) {
+                    try {
+                        JSONObject dictDashboard = response.getJSONObject("data");
+                        lblAmount.setText(String.valueOf(dictDashboard.getInt("total_funds")));
+                        lblRemainingAmount.setText(String.valueOf(dictDashboard.getInt("remaining_funds")));
+                        lblOngoingProjectAmount.setText(String.valueOf(dictDashboard.getInt("on_going_project")));
+                        lblCompleteProjectAmount.setText(String.valueOf(dictDashboard.getInt("complete_project")));
+                        LoadingDialog.getInstance().dismiss();
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                @Override
+                public void onError(String error) {
+                    LoadingDialog.getInstance().dismiss();
+                }
+
+                @Override
+                public void onStart() {
+
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-//        tab.setText(titles.get(position));
-    }
 }
