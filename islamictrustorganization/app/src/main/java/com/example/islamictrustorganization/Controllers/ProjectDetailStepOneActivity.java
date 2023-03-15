@@ -2,6 +2,8 @@ package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import java.util.Map;
 
 public class ProjectDetailStepOneActivity extends AppCompatActivity {
     TextView projectHeading , projectNameSubHeading , projectDate , projectDescription;
+    ImageView projectDetailGoBackBtn;
     RecyclerView imageList;
     GridLayoutManager gridLayout;
     GridViewImageAdapter gridViewImageAdapter;
@@ -77,8 +80,10 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
                             gridViewImageModel.setImgID(dictImg.getInt("id"));
                             if(dictImg.getString("image") != null) {
                                 gridViewImageModel.setImgURL(dictImg.getString("image"));
+                                gridViewImageModel.setFlagIsVideo(false);
                             }else{
                                 gridViewImageModel.setImgURL(dictImg.getString("video"));
+                                gridViewImageModel.setFlagIsVideo(true);
                             }
                             imgUpdateDetail.add(gridViewImageModel);
                             displayData();
@@ -119,12 +124,17 @@ public class ProjectDetailStepOneActivity extends AppCompatActivity {
         projectDescription = findViewById(R.id.projectDescription);
         imageList = findViewById(R.id.imageList);
 
-
+        projectDetailGoBackBtn = findViewById(R.id.projectDetailGoBackBtn);
         projectHeading.setText(BaseClass.selectedProjectName);
         projectNameSubHeading.setText(BaseClass.selectedUpdateProjectName);
         projectDate.setText(BaseClass.selectedUpdateProjectDate);
         projectDescription.setText(BaseClass.selectedUpdateProjectDescription);
-
+        projectDetailGoBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 //        gridLayout = new GridLayoutManager(imageList.this , 2);
     }
 }

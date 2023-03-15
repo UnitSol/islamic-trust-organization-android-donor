@@ -4,11 +4,15 @@ public class GridViewImageModel {
     private String imgURL;
     private int imgID;
 
+    private boolean flagIsVideo;
+
     public GridViewImageModel() {
     }
-    public GridViewImageModel(String imgURL, int imgID) {
+
+    public GridViewImageModel(String imgURL, int imgID, boolean flagIsVideo) {
         this.imgURL = imgURL;
         this.imgID = imgID;
+        this.flagIsVideo = flagIsVideo;
     }
 
     public String getImgURL() {
@@ -25,5 +29,13 @@ public class GridViewImageModel {
 
     public void setImgID(int imgID) {
         this.imgID = imgID;
+    }
+
+    public boolean isFlagIsVideo() {
+        return flagIsVideo;
+    }
+
+    public void setFlagIsVideo(boolean flagIsVideo) {
+        this.flagIsVideo = flagIsVideo;
     }
 }
