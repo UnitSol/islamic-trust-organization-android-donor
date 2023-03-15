@@ -11,12 +11,26 @@
         android:id="@+id/cmd_update_project_detail_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
             android:id="@+id/img_update_project_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
+        <RelativeLayout
+            android:id="@+id/view_video_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2A000000">
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/img_play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_play_arrow_24"
+            android:layout_centerInParent="true"/>
+
+
 
     </RelativeLayout>
 

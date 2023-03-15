@@ -24,6 +24,9 @@
         android:theme="@style/Theme.IslamicTrustOrganization"
         tools:targetApi="31">
         <activity
+            android:name=".Controllers.VedioPlayerActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controllers.MyProjectsActivity"
             android:exported="false" />
         <activity

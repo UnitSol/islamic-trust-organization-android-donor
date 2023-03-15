@@ -7,6 +7,7 @@ public class BaseClass {
     public static String selectedProjectName = "";
     public static String userEmail = "";
     public static String selectedUpdateDetailImageURL = "";
+    public static String selectedUpdateDetailVideoURL = "";
     public static String selectedUpdateProjectID = "";
     public static String selectedUpdateProjectName = "";
     public static String selectedUpdateProjectDate = "";

@@ -1,6 +1,7 @@
 package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.R;
 
 public class ZoomActivity extends AppCompatActivity {
-    ImageView zoomImage;
+    ImageView zoomImage , zoomImageGoBackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,13 @@ public class ZoomActivity extends AppCompatActivity {
 
     private void initialUI() {
         zoomImage = findViewById(R.id.zoom_image);
+        zoomImageGoBackBtn = findViewById(R.id.zoomImageGoBackBtn);
         Glide.with(this).asBitmap().load(BaseClass.selectedUpdateDetailImageURL).into(zoomImage);
+        zoomImageGoBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@ package com.example.islamictrustorganization.Controllers;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
         initializing();
         apiCallingProjectDetail();
         apiCallingProjectUpdateList();
-
+        goBackBtn.setOnClickListener( view -> finish());
     }
 
     private void apiCallingProjectUpdateList() {
@@ -180,6 +181,11 @@ public class ProjectDetailActivity extends AppCompatActivity {
         textStatus = findViewById(R.id.textStatus);
         textDescription = findViewById(R.id.textDescription);
 //        textReadMore = findViewById(R.id.textReadMore);
+        projectName.setText("");
+        textStartDate.setText("");
+        textEndDate.setText("");
+        projectPrize.setText("");
+        textDescription.setText("");
 
         imgCompleteProjectDetail = findViewById(R.id.img_complete_project_detail);
         goBackBtn = findViewById(R.id.goBackBtn);
