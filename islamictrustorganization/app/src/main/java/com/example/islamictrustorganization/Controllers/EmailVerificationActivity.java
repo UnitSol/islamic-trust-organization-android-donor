@@ -5,8 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -167,57 +165,60 @@ public class EmailVerificationActivity extends AppCompatActivity {
     }
 
     private void apiCallVerifyCode() {
-        LoadingDialog.getInstance().show(this);
         if (inputOne.getText().length() == 0) {
             displayAlert("Error", "Please enter code.");
         } else if (inputTwo.getText().length() == 0) {
             displayAlert("Error", "Please enter code.");
-        }else if (inputThree.getText().length() == 0) {
+        } else if (inputThree.getText().length() == 0) {
             displayAlert("Error", "Please enter code.");
-        }else if (inputFour.getText().length() == 0) {
+        } else if (inputFour.getText().length() == 0) {
             displayAlert("Error", "Please enter code.");
-        }
-        Map<String, String> mapParams = new HashMap<>();
-        mapParams.put("code", inputOne.getText().toString() + "" + inputTwo.getText().toString() + "" + inputThree.getText().toString() + "" + inputFour.getText().toString());
+        } else {
+            LoadingDialog.getInstance().show(this);
 
-        viewResendCode.setVisibility(View.GONE);
+            Map<String, String> mapParams = new HashMap<>();
+            mapParams.put("code", inputOne.getText().toString() + "" + inputTwo.getText().toString() + "" + inputThree.getText().toString() + "" + inputFour.getText().toString());
 
-        try {
-            ServiceManager serviceManager = new ServiceManager();
-            serviceManager.apiCaller(EndPoints.kValidateResetPasswordCode, mapParams, EmailVerificationActivity.this, new APIResponse() {
-                @Override
-                public void onSuccess(JSONObject response) {
-                    Log.d("API", "Success API ==== " + response.toString());
-                    LoadingDialog.getInstance().dismiss();
+            viewResendCode.setVisibility(View.GONE);
 
-                    Intent intent = new Intent(EmailVerificationActivity.this, NewPasswordActivity.class);
-                    startActivity(intent);
-                }
+            try {
+                ServiceManager serviceManager = new ServiceManager();
+                serviceManager.apiCaller(EndPoints.kValidateResetPasswordCode, mapParams, EmailVerificationActivity.this, new APIResponse() {
+                    @Override
+                    public void onSuccess(JSONObject response) {
+                        Log.d("API", "Success API ==== " + response.toString());
+                        LoadingDialog.getInstance().dismiss();
 
-                @Override
-                public void onError(String error) {
-                    LoadingDialog.getInstance().dismiss();
-                    Log.d("API", "Error API ==== " + error);
-                    if (error != null) {
-                        try {
-                            JSONObject dictError = new JSONObject(error);
-                            Toast.makeText(EmailVerificationActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    } else {
-                        Toast.makeText(EmailVerificationActivity.this, "Please Turn On Internet", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(EmailVerificationActivity.this, NewPasswordActivity.class);
+                        startActivity(intent);
                     }
 
-                }
-                @Override
-                public void onStart() {
-                    Log.d("API", "Started Calling API");
-                }
-            });
-        } catch (Exception e) {
-            LoadingDialog.getInstance().dismiss();
-            e.printStackTrace();
+                    @Override
+                    public void onError(String error) {
+                        LoadingDialog.getInstance().dismiss();
+                        Log.d("API", "Error API ==== " + error);
+                        if (error != null) {
+                            try {
+                                JSONObject dictError = new JSONObject(error);
+                                Toast.makeText(EmailVerificationActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                        } else {
+                            Toast.makeText(EmailVerificationActivity.this, "Please Turn On Internet", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onStart() {
+                        Log.d("API", "Started Calling API");
+                    }
+                });
+            } catch (Exception e) {
+                LoadingDialog.getInstance().dismiss();
+                e.printStackTrace();
+            }
         }
     }
 

@@ -54,8 +54,10 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                     displayAlert("Error", "Please enter your email id.");
                 } else if (isEmailValid(txtForgotPasswordEmail.getText().toString()) == false) {
                     displayAlert("Error", "Please enter a valid email id.");
+                }else{
+
+                    apiCallSendResetPasswordCode();
                 }
-                apiCallSendResetPasswordCode();
             }
         });
     }

@@ -8,6 +8,7 @@
     tools:context=".Controllers.MyProjectsActivity">
 
     <ScrollView
+        android:id="@+id/fragments_display"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -35,12 +36,23 @@
                     android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/tab_layout"/>
-
+                    android:layout_below="@+id/tab_layout" />
 
 
         </RelativeLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_request_project"
+        android:layout_width="367dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_curve"
+        android:text="Request Project"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

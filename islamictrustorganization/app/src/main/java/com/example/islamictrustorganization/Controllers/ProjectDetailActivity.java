@@ -134,15 +134,16 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
                             sliderModel.setImgUrl(dictImgNewProjectDetail.getString("image"));
                             projectDetailSliderItem.add(sliderModel);
-                            imgCompleteProjectDetail.setSliderAdapter(sliderAdapter);
-                            displayData();
-//                            imgMakeDonationProject.setIndicatorAnimationDuration(100);
-                            imgCompleteProjectDetail.setSliderAnimationDuration(200);
-                            imgCompleteProjectDetail.setAutoCycle(true);
-                            imgCompleteProjectDetail.startAutoCycle();
-                            imgCompleteProjectDetail.setScrollTimeInSec(3);
 
                         }
+                        imgCompleteProjectDetail.setSliderAdapter(sliderAdapter);
+                        displayData();
+//                            imgMakeDonationProject.setIndicatorAnimationDuration(100);
+                        imgCompleteProjectDetail.setSliderAnimationDuration(200);
+                        imgCompleteProjectDetail.setAutoCycle(true);
+                        imgCompleteProjectDetail.startAutoCycle();
+                        imgCompleteProjectDetail.setScrollTimeInSec(3);
+
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

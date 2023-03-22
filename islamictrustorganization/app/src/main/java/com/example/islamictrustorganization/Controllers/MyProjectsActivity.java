@@ -2,6 +2,8 @@ package com.example.islamictrustorganization.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
     TextView lblUserName;
     BottomNavigationView bottomNavigationView;
     TabLayout tabLayout;
+    Button btnRequestProject;
     ViewPager2 viewPager;
     ArrayList<String> titles;
 
@@ -95,6 +98,11 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
 //                    return true;
             }
             return false;
+        });
+        btnRequestProject = findViewById(R.id.btn_request_project);
+        btnRequestProject.setOnClickListener(view -> {
+            Intent intent = new Intent(MyProjectsActivity.this , RequestProjectActivity.class);
+            startActivity(intent);
         });
     }
     public void setViewPageAdapter(){

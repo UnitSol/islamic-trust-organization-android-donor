@@ -46,9 +46,11 @@ public class NewPasswordActivity extends AppCompatActivity {
                 } else if (newConfirmPassword.getText().length() == 0) {
                     displayAlert("Error", "Please complete the all field");
                 } else if (setNewPassword.getText().toString() != newConfirmPassword.getText().toString()) {
+                    Toast.makeText(NewPasswordActivity.this, "Enter Same Password", Toast.LENGTH_SHORT).show();
+                }else{
 
+                    apiCallUpdatePassword();
                 }
-                apiCallUpdatePassword();
             }
         });
     }
