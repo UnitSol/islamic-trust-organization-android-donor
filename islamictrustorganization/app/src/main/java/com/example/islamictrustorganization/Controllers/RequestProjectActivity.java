@@ -92,8 +92,6 @@ public class RequestProjectActivity extends AppCompatActivity {
 //                        startActivity(intent);
 //                        finish();
 //
-//
-//
 //                    } catch (JSONException e) {
 //                        LoadingDialog.getInstance().dismiss();
 //                        throw new RuntimeException(e);

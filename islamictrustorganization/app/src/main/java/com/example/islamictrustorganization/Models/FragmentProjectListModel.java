@@ -4,7 +4,7 @@ public class FragmentProjectListModel {
 
     private String imgProjectLogoURL;
     private String projectName;
-    private String projectCast;
+    private String projectCost;
     private int projectID;
 
     public FragmentProjectListModel() {
@@ -13,7 +13,7 @@ public class FragmentProjectListModel {
     public FragmentProjectListModel(String imgProjectLogoURL, String projectName, String projectCost, int projectID) {
         this.imgProjectLogoURL = imgProjectLogoURL;
         this.projectName = projectName;
-        this.projectCast = projectCost;
+        this.projectCost = projectCost;
         this.projectID = projectID;
     }
 
@@ -34,11 +34,11 @@ public class FragmentProjectListModel {
     }
 
     public String getProjectCast() {
-        return projectCast;
+        return projectCost;
     }
 
     public void setProjectCast(String projectCost) {
-        this.projectCast = projectCost;
+        this.projectCost = projectCost;
     }
 
     public int getProjectID() {

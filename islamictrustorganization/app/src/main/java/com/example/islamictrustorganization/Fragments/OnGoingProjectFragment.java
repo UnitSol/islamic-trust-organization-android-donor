@@ -64,7 +64,7 @@ public class OnGoingProjectFragment extends Fragment {
                             FragmentProjectListModel fragmentProjectListModel = new FragmentProjectListModel();
                             fragmentProjectListModel.setProjectID(dictCompleteProject.getInt("id"));
                             fragmentProjectListModel.setProjectName(dictCompleteProject.getString("name"));
-                            fragmentProjectListModel.setProjectCast(dictCompleteProject.getInt("cost") + "");
+                            fragmentProjectListModel.setProjectCast((dictCompleteProject.isNull("cost"))?"0":dictCompleteProject.getInt("cost") + "");
                             fragmentProjectListModel.setImgProjectLogoURL(dictCompleteProject.getString("image"));
                             arrCompleteProjectList.add(fragmentProjectListModel);
                         }

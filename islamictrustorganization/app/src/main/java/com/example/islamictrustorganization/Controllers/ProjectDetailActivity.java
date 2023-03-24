@@ -122,7 +122,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
                         projectName.setText(dictNEwProjectDetail.getString("name"));
                         textStartDate.setText(dictNEwProjectDetail.getString("start_date"));
                         textEndDate.setText(dictNEwProjectDetail.getString("end_date"));
-                        projectPrize.setText("$" + dictNEwProjectDetail.getInt("budget"));
+
+                        projectPrize.setText("$"+((dictNEwProjectDetail.isNull("budget"))?"NA": dictNEwProjectDetail.getInt("budget")+""));
                         textDescription.setText(dictNEwProjectDetail.getString("description"));
                         JSONArray arrImg = dictNEwProjectDetail.getJSONArray("images");
                         for (int i = 0; i < arrImg.length(); i++) {
@@ -136,7 +137,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
                             projectDetailSliderItem.add(sliderModel);
 
                         }
-                        imgCompleteProjectDetail.setSliderAdapter(sliderAdapter);
+                        //imgCompleteProjectDetail.setSliderAdapter(sliderAdapter);
                         displayData();
 //                            imgMakeDonationProject.setIndicatorAnimationDuration(100);
                         imgCompleteProjectDetail.setSliderAnimationDuration(200);
