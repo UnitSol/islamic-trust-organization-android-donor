@@ -55,10 +55,10 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         inputOne = findViewById(R.id.inputOne);
         inputOne.setOnKeyListener((view, i, keyEvent) -> {
-            if (keyEvent.getAction()!= KeyEvent.ACTION_DOWN) {
+            if (keyEvent.getAction() != KeyEvent.ACTION_DOWN) {
                 inputTwo.requestFocus();
             }
-            if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL){
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL) {
                 inputOne.requestFocus();
             }
             return false;
@@ -67,10 +67,10 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         inputTwo = findViewById(R.id.inputTwo);
         inputTwo.setOnKeyListener((view, i, keyEvent) -> {
-            if (keyEvent.getAction()!= KeyEvent.ACTION_DOWN) {
+            if (keyEvent.getAction() != KeyEvent.ACTION_DOWN) {
                 inputThree.requestFocus();
             }
-            if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL){
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL) {
                 inputOne.requestFocus();
             }
             return false;
@@ -79,10 +79,10 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         inputThree = findViewById(R.id.inputThree);
         inputThree.setOnKeyListener((view, i, keyEvent) -> {
-            if (keyEvent.getAction()!= KeyEvent.ACTION_DOWN) {
+            if (keyEvent.getAction() != KeyEvent.ACTION_DOWN) {
                 inputFour.requestFocus();
             }
-            if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL){
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL) {
                 inputTwo.requestFocus();
             }
             return false;
@@ -90,10 +90,10 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         inputFour = findViewById(R.id.inputFour);
         inputFour.setOnKeyListener((view, i, keyEvent) -> {
-            if (keyEvent.getAction()!= KeyEvent.ACTION_DOWN) {
+            if (keyEvent.getAction() != KeyEvent.ACTION_DOWN) {
                 apiCallVerifyCode();
             }
-            if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL){
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DEL) {
                 inputThree.requestFocus();
             }
             return false;
@@ -140,15 +140,14 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 public void onError(String error) {
                     LoadingDialog.getInstance().dismiss();
                     Log.d("API", "Error API ==== " + error);
-                    if(error != null) {
+                    if (error != null) {
                         try {
                             JSONObject dictError = new JSONObject(error);
                             Toast.makeText(EmailVerificationActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                    }
-                    else{
+                    } else {
                         Toast.makeText(EmailVerificationActivity.this, "Please connect the internet", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -239,6 +238,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
             }
         }.start();
     }
+
     public void displayAlert(String title, String body) {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle(title)

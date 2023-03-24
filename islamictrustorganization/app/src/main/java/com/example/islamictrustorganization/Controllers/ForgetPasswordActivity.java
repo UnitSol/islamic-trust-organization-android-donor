@@ -45,7 +45,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         txtForgotPasswordEmail = findViewById(R.id.txt_forgot_password_email);
         cmdSendResetPasswordCode = findViewById(R.id.cmd_send_reset_password_code);
 
-        txtForgotPasswordEmail.setText("hajiusm281@gmail.com");
+        //txtForgotPasswordEmail.setText("hajiusm281@gmail.com");
 
         cmdSendResetPasswordCode.setOnClickListener(new View.OnClickListener() {
             @Override

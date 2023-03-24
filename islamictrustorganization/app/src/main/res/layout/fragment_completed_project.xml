@@ -5,12 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.CompletedProjectFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/complete_project_list_fragment"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        tools:listitem="@layout/item_list_in_progress_projects"/>
+        android:layout_above="@+id/bottom_nav"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/complete_project_list_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_list_in_progress_projects"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

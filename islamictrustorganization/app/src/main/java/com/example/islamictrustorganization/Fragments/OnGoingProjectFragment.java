@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.islamictrustorganization.Adapters.FragmentProjectListAdapter;
 import com.example.islamictrustorganization.BaseClass;
@@ -32,8 +33,10 @@ public class OnGoingProjectFragment extends Fragment {
     View view;
     RecyclerView rvOnGoingProjectList;
     FragmentProjectListAdapter projectListAdapter;
-    ArrayList<FragmentProjectListModel> arrCompleteProjectList = new ArrayList<>();
+    ArrayList<FragmentProjectListModel> arrOnGoingProjects = new ArrayList<>();
     Context thisContext;
+
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,13 +45,29 @@ public class OnGoingProjectFragment extends Fragment {
         rvOnGoingProjectList = view.findViewById(R.id.on_going_project_fragment);
 
         thisContext = view.getContext();
-        apiCallingCompleteProject();
+        apiCallGetOnGoingProjects();
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                apiCallGetOnGoingProjects();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
 
         return view;
     }
 
-    private void apiCallingCompleteProject() {
+    private void apiCallGetOnGoingProjects() {
+
+        if (arrOnGoingProjects.size() > 0){
+            for (int i=0; i<arrOnGoingProjects.size(); i++){
+                arrOnGoingProjects.remove(i);
+            }
+        }
+
         LoadingDialog.getInstance().show(thisContext);
         Map<String, String> mapParam = new HashMap<>();
         mapParam.put("user_id" , BaseClass.userID);
@@ -66,7 +85,7 @@ public class OnGoingProjectFragment extends Fragment {
                             fragmentProjectListModel.setProjectName(dictCompleteProject.getString("name"));
                             fragmentProjectListModel.setProjectCast((dictCompleteProject.isNull("cost"))?"0":dictCompleteProject.getInt("cost") + "");
                             fragmentProjectListModel.setImgProjectLogoURL(dictCompleteProject.getString("image"));
-                            arrCompleteProjectList.add(fragmentProjectListModel);
+                            arrOnGoingProjects.add(fragmentProjectListModel);
                         }
                         displayData();
                         LoadingDialog.getInstance().dismiss();
@@ -96,7 +115,7 @@ public class OnGoingProjectFragment extends Fragment {
 
     private void displayData() {
         LinearLayoutManager outManager = new LinearLayoutManager(thisContext);
-        projectListAdapter = new FragmentProjectListAdapter(thisContext, arrCompleteProjectList);
+        projectListAdapter = new FragmentProjectListAdapter(thisContext, arrOnGoingProjects);
         rvOnGoingProjectList.setLayoutManager(new LinearLayoutManager(thisContext));
         rvOnGoingProjectList.setAdapter(projectListAdapter);
 

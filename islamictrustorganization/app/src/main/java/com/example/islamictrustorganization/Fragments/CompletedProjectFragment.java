@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.islamictrustorganization.Adapters.FragmentProjectListAdapter;
 import com.example.islamictrustorganization.BaseClass;
@@ -35,6 +36,8 @@ public class CompletedProjectFragment extends Fragment {
     ArrayList<FragmentProjectListModel> arrCompleteProjectList = new ArrayList<>();
     Context thisContext;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,38 +45,27 @@ public class CompletedProjectFragment extends Fragment {
         view =  inflater.inflate(R.layout.fragment_completed_project, container, false);
         rvCompleteProjectList = view.findViewById(R.id.complete_project_list_fragment);
         thisContext = view.getContext();
-        apiCallingCompleteProject();
+        apiCallGetCompletedProjects();
 
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        fragmentProjectListModel.setProjectID(1);
-//        fragmentProjectListModel.setProjectName("Project Name");
-//        fragmentProjectListModel.setProjectCast("5873");
-//        arrCompleteProjectList.add(fragmentProjectListModel);
-//        displayData();
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                apiCallGetCompletedProjects();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         return view;
     }
 
-    private void apiCallingCompleteProject() {
+    private void apiCallGetCompletedProjects() {
+
+        if (arrCompleteProjectList.size() > 0){
+            for (int i=0; i<arrCompleteProjectList.size(); i++){
+                arrCompleteProjectList.remove(i);
+            }
+        }
         LoadingDialog.getInstance().show(thisContext);
         Map<String, String> mapParam = new HashMap<>();
         mapParam.put("user_id" , BaseClass.userID);
