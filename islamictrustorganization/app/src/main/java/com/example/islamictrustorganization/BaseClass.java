@@ -13,6 +13,8 @@ public class BaseClass {
     public static String selectedUpdateProjectDate = "";
     public static String selectedUpdateProjectDescription = "";
     public static String userID = "";
+    public static String SelectedProjectType = "";
+    public static String SelectedProjectTypeID = "";
 
 
 }
