@@ -1,7 +1,9 @@
 package com.example.islamictrustorganization.Controllers;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,16 +41,33 @@ public class MoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
         getSupportActionBar().hide();
-        initalUI();
+        initUI();
 
-        NotificationCenter.addObserver(MoreActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED , didProfileUpdate);
+        NotificationCenter.addObserver(MoreActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED, didProfileUpdate);
         cmdLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MoreActivity.this , LogInActivity.class);
-                startActivity(intent);
-                finish();
 
+                AlertDialog alertDialog = new AlertDialog.Builder(MoreActivity.this)
+                        .setTitle("Please Confirm")
+                        .setMessage("Are you sure you want to logout?")
+                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(MoreActivity.this, LogInActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //set what should happen when negative button is clicked
+
+                            }
+                        }).show();
             }
         });
         cmdProfile.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +79,7 @@ public class MoreActivity extends AppCompatActivity {
         });
     }
 
-    private void initalUI() {
+    private void initUI() {
         cmdLogOut = findViewById(R.id.cmd_log_out);
         cmdProfile = findViewById(R.id.cmd_profile);
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -92,6 +111,19 @@ public class MoreActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    public void displayAlert(String title, String body) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(body)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+                        finish();
+                    }
+                }).show();
     }
 
 }

@@ -56,8 +56,6 @@ public class LogInActivity extends AppCompatActivity {
 
         cmdLogin = findViewById(R.id.loginBtn);
         cmdLogin.setOnClickListener(view -> {
-            //Intent intent = new Intent(LogInActivity.this , DashBoardActivity.class);
-            //startActivity(intent);
             apiCallLogin();
         });
 
@@ -106,11 +104,11 @@ public class LogInActivity extends AppCompatActivity {
                             BaseClass.userName = dictUser.getString("name");
                             UserHelper.setLoggedInUserData(LogInActivity.this, dictUser.toString());
 
+                            LoadingDialog.getInstance().dismiss();
+
                             Intent intent = new Intent(LogInActivity.this, DashBoardActivity.class);
                             startActivity(intent);
                             finish();
-
-                            LoadingDialog.getInstance().dismiss();
 
                         } catch (JSONException e) {
                             LoadingDialog.getInstance().dismiss();

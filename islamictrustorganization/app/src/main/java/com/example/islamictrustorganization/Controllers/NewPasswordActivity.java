@@ -30,22 +30,22 @@ public class NewPasswordActivity extends AppCompatActivity {
     EditText setNewPassword, newConfirmPassword;
     String newPass , confirmPass;
     ImageView eyeNewPasswordBtn, eyeConfirmPasswordBtn;
-    Button confirmpasswordBtn;
+    Button cmdConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_password);
         getSupportActionBar().hide();
-        initalization();
-        confirmpasswordBtn.setOnClickListener(new View.OnClickListener() {
+        initUI();
+        cmdConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (setNewPassword.getText().length() == 0) {
                     displayAlert("Error", "Please complete the all field");
                 } else if (newConfirmPassword.getText().length() == 0) {
                     displayAlert("Error", "Please complete the all field");
-                } else if (setNewPassword.getText().toString() != newConfirmPassword.getText().toString()) {
+                } else if (!setNewPassword.getText().toString().equals(newConfirmPassword.getText().toString())) {
                     Toast.makeText(NewPasswordActivity.this, "Enter Same Password", Toast.LENGTH_SHORT).show();
                 }else{
 
@@ -67,6 +67,7 @@ public class NewPasswordActivity extends AppCompatActivity {
                 }).show();
     }
     private void apiCallUpdatePassword() {
+
         LoadingDialog.getInstance().show(this);
 
         Map<String , String > mapParam = new HashMap<>();
@@ -80,6 +81,7 @@ public class NewPasswordActivity extends AppCompatActivity {
                     Log.d("API", "Success API ==== " + response.toString());
                     LoadingDialog.getInstance().dismiss();
                     Intent intent = new Intent(NewPasswordActivity.this , LogInActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
 
@@ -114,14 +116,11 @@ public class NewPasswordActivity extends AppCompatActivity {
 
     }
 
-    private void initalization() {
+    private void initUI() {
         setNewPassword = findViewById(R.id.txt_set_new_password);
         newConfirmPassword = findViewById(R.id.txt_set_confirm_password);
 
-//        eyeNewPasswordBtn = findViewById(R.id.eyeNewPasswordBtn);
-//        eyeConfirmPasswordBtn = findViewById(R.id.eyeConfirmPasswordBtn);
-
-        confirmpasswordBtn = findViewById(R.id.confirmpasswordBtn);
+        cmdConfirm = findViewById(R.id.confirmpasswordBtn);
 
         newPass = setNewPassword.getText().toString().trim();
         confirmPass = newConfirmPassword.getText().toString().trim();
