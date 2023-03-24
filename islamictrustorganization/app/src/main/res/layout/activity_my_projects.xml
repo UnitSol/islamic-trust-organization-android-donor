@@ -7,48 +7,39 @@
 
     tools:context=".Controllers.MyProjectsActivity">
 
-    <ScrollView
-        android:id="@+id/fragments_display"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_above="@+id/btn_request_project">
 
-        <RelativeLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    app:tabGravity="center"
-                    app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/headingColor"
-                    app:tabInlineLabel="true"
-                    app:tabMode="scrollable"
-                    app:tabTextAppearance="@style/MyCustomeTabText"
-                    app:tabSelectedTextColor="@color/headingColor"/>
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            app:tabGravity="center"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorColor="@color/headingColor"
+            app:tabInlineLabel="true"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/headingColor"
+            app:tabTextAppearance="@style/MyCustomeTabText" />
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager"
-                    android:layout_marginTop="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/tab_layout" />
-
-
-        </RelativeLayout>
-    </ScrollView>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/tab_layout"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_request_project"
         android:layout_width="367dp"
         android:layout_height="46dp"
         android:layout_above="@+id/bottom_nav"
-        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_curve"
         android:text="Request Project"
         android:textAllCaps="false"
