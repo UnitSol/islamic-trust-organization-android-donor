@@ -27,6 +27,7 @@ public class EndPoints {
     public static final String kUserProfileUpdate = BaseURL + "update_profile";
     public static final String kGetProjectTypes = BaseURL + "get_project_types";
     public static final String kDonnorRequest = BaseURL + "donor_request";
+    public static final String kGetMyRequest = BaseURL + "get_donor_request";
     // [@End Password Reset]
 
 }

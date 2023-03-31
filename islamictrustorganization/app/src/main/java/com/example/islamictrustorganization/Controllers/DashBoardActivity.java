@@ -113,11 +113,11 @@ public class DashBoardActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     //finish();
                     return true;
-//                case R.id.menu_buyer_orders:
-//                    startActivity(new Intent(getApplicationContext(), BuyerOrdersActivity.class));
-//                    overridePendingTransition(0, 0);
-//                    finish();
-//                    return true;
+                case R.id.menu_request_view:
+                    startActivity(new Intent(getApplicationContext(), MyRequestActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
 //                case R.id.menu_buyer_more:
 //                    return true;
             }
