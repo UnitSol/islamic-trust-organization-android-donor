@@ -96,18 +96,16 @@ public class MoreActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
+                case R.id.menu_request_view:
+                    startActivity(new Intent(getApplicationContext(), MyRequestActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
                 case R.id.menu_donner_more:
 //                    startActivity(new Intent(getApplicationContext(), MoreActivity.class));
 //                    overridePendingTransition(0, 0);
 //                    finish();
                     return true;
-//                case R.id.menu_buyer_orders:
-//                    startActivity(new Intent(getApplicationContext(), BuyerOrdersActivity.class));
-//                    overridePendingTransition(0, 0);
-//                    finish();
-//                    return true;
-//                case R.id.menu_buyer_more:
-//                    return true;
             }
             return false;
         });

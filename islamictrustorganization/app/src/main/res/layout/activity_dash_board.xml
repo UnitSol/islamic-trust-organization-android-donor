@@ -15,7 +15,7 @@
         android:layout_marginEnd="20dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/user_image_id"
+            android:id="@+id/img_user_profile"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:layout_centerVertical="true"
@@ -27,9 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/user_image_id"
+            android:layout_toRightOf="@+id/img_user_profile"
             android:fontFamily="sans-serif-black"
-            android:text="Majid Khan"
             android:textColor="@color/headingColor"
             android:textFontWeight="700"
             android:textSize="20sp" />

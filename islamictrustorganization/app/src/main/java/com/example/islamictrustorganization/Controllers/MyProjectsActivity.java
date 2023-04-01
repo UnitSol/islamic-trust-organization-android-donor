@@ -1,7 +1,10 @@
 package com.example.islamictrustorganization.Controllers;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,12 +16,18 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
+import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.CompletedProjectFragment;
 import com.example.islamictrustorganization.Fragments.OnGoingProjectFragment;
+import com.example.islamictrustorganization.Helpers.UserHelper;
+import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
 import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -31,6 +40,16 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
     ViewPager2 viewPager;
     ArrayList<String> titles;
 
+    private BroadcastReceiver didRequestPost = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("NotificationCenter", "New Request Posted");
+            startActivity(new Intent(getApplicationContext(), MyRequestActivity.class));
+            overridePendingTransition(0, 0);
+            finish();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,33 +61,16 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
         titles.add("On Going Project");
         setViewPageAdapter();
         new TabLayoutMediator(tabLayout , viewPager , this).attach();
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                viewPager.setCurrentItem(tab.getPosition());
-//                tabLayout.getTabAt(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
+
+        NotificationCenter.addObserver(MyProjectsActivity.this, NotificationCenter.NotificationType.NEW_REQUEST_POSTED, didRequestPost);
+
     }
 
     private void initUI() {
-        //userImageId = findViewById(R.id.img_user_profile);
+
         lblUserName = findViewById(R.id.lbl_user_name);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
-//        viewPageAdapter = new ViewPageAdapter(this);
-//        viewPager.setAdapter(viewPageAdapter);
-
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.menu_donner_new_projects);
@@ -84,23 +86,23 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
 //                    overridePendingTransition(0, 0);
 //                    finish();
                     return true;
+                case R.id.menu_request_view:
+                    startActivity(new Intent(getApplicationContext(), MyRequestActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
                 case R.id.menu_donner_more:
                     startActivity(new Intent(getApplicationContext(), MoreActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
-//                case R.id.menu_buyer_orders:
-//                    startActivity(new Intent(getApplicationContext(), BuyerOrdersActivity.class));
-//                    overridePendingTransition(0, 0);
-//                    finish();
-//                    return true;
-//                case R.id.menu_buyer_more:
-//                    return true;
+
             }
             return false;
         });
         btnRequestProject = findViewById(R.id.btn_request_project);
         btnRequestProject.setOnClickListener(view -> {
+            BaseClass.SelectedProjectTypeID = null;
             Intent intent = new Intent(MyProjectsActivity.this , RequestProjectActivity.class);
             startActivity(intent);
         });
@@ -108,7 +110,6 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
     public void setViewPageAdapter(){
         ViewPageAdapter viewPageAdapter1 = new ViewPageAdapter(this);
         ArrayList<Fragment> fragmentList = new ArrayList<>();
-//        fragmentList.add(new DashboardFragment());
         fragmentList.add(new CompletedProjectFragment());
         fragmentList.add(new OnGoingProjectFragment());
         viewPageAdapter1.setData(fragmentList);

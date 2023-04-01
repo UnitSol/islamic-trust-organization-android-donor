@@ -83,8 +83,6 @@ public class SelectProjectTypeActivity extends AppCompatActivity {
                         projectTypeModel.setProjectTypeID(dictType.getInt("id"));
                         projectTypeModel.setProjectTypeName(dictType.getString("name"));
                         arrData.add(projectTypeModel);
-
-
                     }
                     displayAgencies();
                     LoadingDialog.getInstance().dismiss();

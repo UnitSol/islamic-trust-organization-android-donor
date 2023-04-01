@@ -10,51 +10,53 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <RelativeLayout
-                android:id="@+id/cmd_go_to_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
+            <RelativeLayout
+                android:id="@+id/view_top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
                 <ImageView
                     android:id="@+id/go_to_more"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/go_back_botton"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginLeft="35dp"/>
+                    android:layout_centerVertical="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
+                    android:text="More"
+                    android:layout_centerVertical="true"
                     android:fontFamily="sans-serif-black"
                     android:textFontWeight="700"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:layout_toRightOf="@+id/go_to_more"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginLeft="17dp"/>
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="10dp"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/cmd_user_profile_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/cmd_go_to_more">
+                android:layout_below="@+id/view_top_bar">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/img_user_profile"
-                    android:layout_width="171dp"
-                    android:layout_height="171dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/user_image"
                     style="@style/Circular"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="62dp" />
+                    />
             </RelativeLayout>
 
             <RelativeLayout
 
                 android:id="@+id/rl_user_name"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_below="@+id/cmd_user_profile_img"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
@@ -79,7 +81,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Name"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText" />
 
                     </LinearLayout>
@@ -92,16 +95,16 @@
                         <EditText
                             android:id="@+id/txt_profile_user_name"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="40dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
                             android:autofillHints=""
                             android:background="@drawable/edittext_style"
                             android:backgroundTint="@color/white"
-
                             android:hint="Enter Name"
                             android:includeFontPadding="false"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText,RtlSymmetry,SmallSp" />
 
                     </RelativeLayout>
@@ -114,7 +117,7 @@
 
                 android:id="@+id/rl_user_email"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_below="@+id/rl_user_name"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
@@ -139,7 +142,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Email"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText" />
 
                     </LinearLayout>
@@ -152,16 +156,16 @@
                         <EditText
                             android:id="@+id/txt_profile_user_email"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="40dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
                             android:autofillHints=""
                             android:background="@drawable/edittext_style"
                             android:backgroundTint="@color/white"
-
                             android:hint="Enter Email"
                             android:includeFontPadding="false"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText,RtlSymmetry,SmallSp" />
 
                     </RelativeLayout>
@@ -174,7 +178,7 @@
 
                 android:id="@+id/rl_user_phone"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_below="@+id/rl_user_email"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
@@ -199,7 +203,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Phone No"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText" />
 
                     </LinearLayout>
@@ -212,16 +217,16 @@
                         <EditText
                             android:id="@+id/txt_profile_user_phone"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="35dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
                             android:autofillHints=""
                             android:background="@drawable/edittext_style"
                             android:backgroundTint="@color/white"
-
                             android:hint="Enter Phone Number"
                             android:includeFontPadding="false"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText,RtlSymmetry,SmallSp" />
 
                     </RelativeLayout>
@@ -234,7 +239,7 @@
 
                 android:id="@+id/rl_user_address"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_below="@+id/rl_user_phone"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
@@ -259,7 +264,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Address"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText" />
 
                     </LinearLayout>
@@ -272,16 +278,16 @@
                         <EditText
                             android:id="@+id/txt_profile_user_adress"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="35dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
                             android:autofillHints=""
                             android:background="@drawable/edittext_style"
                             android:backgroundTint="@color/white"
-
                             android:hint="Enter Address"
                             android:includeFontPadding="false"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText,RtlSymmetry,SmallSp" />
 
                     </RelativeLayout>

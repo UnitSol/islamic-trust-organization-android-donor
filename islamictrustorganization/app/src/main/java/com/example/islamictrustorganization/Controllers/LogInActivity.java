@@ -54,6 +54,9 @@ public class LogInActivity extends AppCompatActivity {
         //txtEmail.setText("hajiusm281@gmail.com");
         //txtPassword.setText("password");
 
+        txtEmail.setText("arslantahir.engineer@gmail.com");
+        txtPassword.setText("112233");
+
         cmdLogin = findViewById(R.id.loginBtn);
         cmdLogin.setOnClickListener(view -> {
             apiCallLogin();

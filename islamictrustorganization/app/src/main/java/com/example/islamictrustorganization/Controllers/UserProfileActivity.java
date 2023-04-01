@@ -106,7 +106,7 @@ public class UserProfileActivity extends AppCompatActivity {
             txtProfileUserAdress.setText(dictUser.getString("address"));
 
             if (!dictUser.isNull("image")) {
-                Glide.with(this).load(dictUser.getString("image")).into(imgUserProfile);
+                Glide.with(this).load(dictUser.getString("image")).circleCrop().into(imgUserProfile);
             }
 
         } catch (JSONException e) {

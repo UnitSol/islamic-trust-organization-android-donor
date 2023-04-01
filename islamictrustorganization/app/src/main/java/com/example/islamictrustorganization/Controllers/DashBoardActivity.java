@@ -44,7 +44,7 @@ public class DashBoardActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     ArrayList<String> titles;
 
-    TextView lblAmount , lblRemainingAmount , lblOngoingProjectAmount , lblCompleteProjectAmount;
+    TextView lblAmount, lblRemainingAmount, lblOngoingProjectAmount, lblCompleteProjectAmount;
 
     SwipeRefreshLayout swipeRefreshLayout;
     private BroadcastReceiver didProfileUpdate = new BroadcastReceiver() {
@@ -60,6 +60,7 @@ public class DashBoardActivity extends AppCompatActivity {
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,7 @@ public class DashBoardActivity extends AppCompatActivity {
             }
         });
 
-        NotificationCenter.addObserver(DashBoardActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED , didProfileUpdate);
+        NotificationCenter.addObserver(DashBoardActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED, didProfileUpdate);
 
 
     }
@@ -90,9 +91,11 @@ public class DashBoardActivity extends AppCompatActivity {
         lblUserName.setText(BaseClass.userName);
         try {
             JSONObject dictUser = new JSONObject(UserHelper.getLoggedInUserData(this));
+            Log.e("User", "User Data ===== " + dictUser);
+
             lblUserName.setText(dictUser.getString("name"));
             if (!dictUser.isNull("image")) {
-                Glide.with(this).load(dictUser.getString("image")).into(imgProfile);
+                Glide.with(this).load(dictUser.getString("image")).circleCrop().into(imgProfile);
             }
 
         } catch (JSONException e) {
@@ -104,7 +107,6 @@ public class DashBoardActivity extends AppCompatActivity {
         lblRemainingAmount = findViewById(R.id.lbl_remaining_amount);
         lblOngoingProjectAmount = findViewById(R.id.lbl_ongoing_project_amount);
         lblCompleteProjectAmount = findViewById(R.id.lbl_complete_project_amount);
-
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -121,18 +123,17 @@ public class DashBoardActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
-                case R.id.menu_donner_more:
-                    startActivity(new Intent(getApplicationContext(), MoreActivity.class));
-                    overridePendingTransition(0, 0);
-                    //finish();
-                    return true;
                 case R.id.menu_request_view:
                     startActivity(new Intent(getApplicationContext(), MyRequestActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
-//                case R.id.menu_buyer_more:
-//                    return true;
+                case R.id.menu_donner_more:
+                    startActivity(new Intent(getApplicationContext(), MoreActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
+
             }
             return false;
         });
@@ -142,7 +143,7 @@ public class DashBoardActivity extends AppCompatActivity {
     private void apiCallGetDashboardData() {
         LoadingDialog.getInstance().show(this);
         Map<String, String> mapParam = new HashMap<>();
-        mapParam.put("user_id" , BaseClass.userID);
+        mapParam.put("user_id", BaseClass.userID);
         try {
             ServiceManager serviceManager = new ServiceManager();
             serviceManager.apiCaller(EndPoints.KGetDashboardDetail, mapParam, this, new APIResponse() {
@@ -170,7 +171,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

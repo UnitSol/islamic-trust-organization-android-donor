@@ -2,8 +2,10 @@ package com.example.islamictrustorganization.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,69 +60,87 @@ public class RequestProjectActivity extends AppCompatActivity {
         btnRequestProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiCallingForRequestProject();
+                apiCallSubmitNewProjectRequest();
             }
         });
     }
 
-    private void apiCallingForRequestProject() {
-        LoadingDialog.getInstance().show(this);
-        Map<String, String> mapParams = new HashMap<>();
-        mapParams.put("project_type_id", BaseClass.SelectedProjectTypeID);
-        mapParams.put("user_id", BaseClass.userID);
-        mapParams.put("name", txtRequestName.getText().toString());
-        mapParams.put("cost", txtRequestCost.getText().toString());
+    private void apiCallSubmitNewProjectRequest() {
 
-        try {
+        if (BaseClass.SelectedProjectTypeID == null) {
+            displayAlert("Error", "Please select project type.");
+        }else if (txtRequestName.getText().length() == 0){
+            displayAlert("Error", "Please enter project request name.");
+        }else if(txtRequestCost.getText().length() == 0){
+            displayAlert("Error", "Please enter project cost.");
+        }else {
+            LoadingDialog.getInstance().show(this);
+            Map<String, String> mapParams = new HashMap<>();
+            mapParams.put("project_type_id", BaseClass.SelectedProjectTypeID);
+            mapParams.put("user_id", BaseClass.userID);
+            mapParams.put("name", txtRequestName.getText().toString());
+            mapParams.put("cost", txtRequestCost.getText().toString());
 
-            ServiceManager serviceManager = new ServiceManager();
+            try {
 
-            serviceManager.apiCaller(EndPoints.kDonnorRequest, mapParams, RequestProjectActivity.this, new APIResponse() {
-                @Override
-                public void onSuccess(JSONObject response) {
+                ServiceManager serviceManager = new ServiceManager();
 
-                    Log.d("API", "Success API ==== " + response.toString());
-                    LoadingDialog.getInstance().dismiss();
-//                    try {
-//
-//                        JSONObject dictUser = response.getJSONObject("data");
-//                        BaseClass.userID = String.valueOf(dictUser.getInt("id"));
-//                        BaseClass.userName = dictUser.getString("name");
-//                        UserHelper.setLoggedInUserData(LogInActivity.this, dictUser.toString());
-//
-//                        Intent intent = new Intent(LogInActivity.this, DashBoardActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//
-//                    } catch (JSONException e) {
-//                        LoadingDialog.getInstance().dismiss();
-//                        throw new RuntimeException(e);
-//                    }
+                serviceManager.apiCaller(EndPoints.kDonnorRequest, mapParams, RequestProjectActivity.this, new APIResponse() {
+                    @Override
+                    public void onSuccess(JSONObject response) {
 
-                }
+                        Log.d("API", "Success API ==== " + response.toString());
+                        LoadingDialog.getInstance().dismiss();
 
-                @Override
-                public void onError(String error) {
-                    LoadingDialog.getInstance().dismiss();
+                        try {
+                            if (response.getBoolean("status") == true){
 
-                    try {
-                        JSONObject dictError = new JSONObject(error);
-                        Toast.makeText(RequestProjectActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                                AlertDialog alertDialog = new AlertDialog.Builder(RequestProjectActivity.this)
+                                        .setTitle("Success")
+                                        .setMessage("Your project request posted successfully.")
+                                        .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                finish();
+
+                                                HashMap<String, String> params = new HashMap<String, String>();
+                                                params.put("isSuccess", String.valueOf(false));
+                                                NotificationCenter.postNotification(RequestProjectActivity.this, NotificationCenter.NotificationType.NEW_REQUEST_POSTED, params);
+                                            }
+                                        }).show();
+
+                            }else{
+                                displayAlert("Server Error", "There is an issue from server side, please try again later.");
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
                     }
 
-                    Log.d("API", "Error API ==== " + error);
-                }
+                    @Override
+                    public void onError(String error) {
+                        LoadingDialog.getInstance().dismiss();
 
-                @Override
-                public void onStart() {
-                    Log.d("API", "Started Calling API");
-                }
-            });
-            //Toast.makeText(TestAPIActivity.this, "POST API called", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
+                        try {
+                            JSONObject dictError = new JSONObject(error);
+                            Toast.makeText(RequestProjectActivity.this, dictError.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        Log.d("API", "Error API ==== " + error);
+                    }
+
+                    @Override
+                    public void onStart() {
+                        Log.d("API", "Started Calling API");
+                    }
+                });
+                //Toast.makeText(TestAPIActivity.this, "POST API called", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -141,8 +161,29 @@ public class RequestProjectActivity extends AppCompatActivity {
             }
         });
         txtProjectType = findViewById(R.id.txt_project_type);
+        txtProjectType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RequestProjectActivity.this , SelectProjectTypeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         txtRequestName = findViewById(R.id.txt_request_name);
         txtRequestCost = findViewById(R.id.txt_request_cost);
         btnRequestProject = findViewById(R.id.btn_request_project);
+    }
+
+    public void displayAlert(String title, String body) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(body)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+
+                    }
+                }).show();
     }
 }

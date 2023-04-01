@@ -40,6 +40,7 @@ public class ProjectTypeAdapter extends RecyclerView.Adapter<ProjectTypeAdapter.
         ProjectTypeModel projectTypeModel = arrProjectType.get(position);
         holder.lblTitle.setText(projectTypeModel.getProjectTypeName());
         holder.cmdTitle.setOnClickListener(view -> {
+
             HashMap<String, String> params = new HashMap<String, String>();
             params.put("isSuccess", String.valueOf(false));
             BaseClass.SelectedProjectType = projectTypeModel.getProjectTypeName();
