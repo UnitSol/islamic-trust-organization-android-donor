@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.DashboardFragment;
@@ -36,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DashBoardActivity extends AppCompatActivity {
-    ImageView userImageId;
+    ImageView imgProfile;
     TextView lblUserName;
     BottomNavigationView bottomNavigationView;
     TabLayout tabLayout;
@@ -78,13 +79,25 @@ public class DashBoardActivity extends AppCompatActivity {
         });
 
         NotificationCenter.addObserver(DashBoardActivity.this, NotificationCenter.NotificationType.PROFILE_UPDATED , didProfileUpdate);
+
+
     }
 
     private void initUI() {
-        userImageId = findViewById(R.id.user_image_id);
+        imgProfile = findViewById(R.id.img_user_profile);
         lblUserName = findViewById(R.id.lbl_user_name);
 
         lblUserName.setText(BaseClass.userName);
+        try {
+            JSONObject dictUser = new JSONObject(UserHelper.getLoggedInUserData(this));
+            lblUserName.setText(dictUser.getString("name"));
+            if (!dictUser.isNull("image")) {
+                Glide.with(this).load(dictUser.getString("image")).into(imgProfile);
+            }
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
 
         lblAmount = findViewById(R.id.lbl_amount);

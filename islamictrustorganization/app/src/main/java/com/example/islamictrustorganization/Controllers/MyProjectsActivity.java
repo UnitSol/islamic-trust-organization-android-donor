@@ -62,7 +62,7 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
     }
 
     private void initUI() {
-        userImageId = findViewById(R.id.user_image_id);
+        //userImageId = findViewById(R.id.img_user_profile);
         lblUserName = findViewById(R.id.lbl_user_name);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
