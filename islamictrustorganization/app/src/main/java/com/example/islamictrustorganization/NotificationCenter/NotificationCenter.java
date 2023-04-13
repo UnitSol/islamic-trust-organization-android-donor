@@ -33,6 +33,7 @@ public class NotificationCenter {
     public enum NotificationType {
         PROFILE_UPDATED,
         PROJECT_TYPE,
+        PROJECT_CATEGORY,
         NEW_REQUEST_POSTED
     }
 

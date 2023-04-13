@@ -4,18 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.islamictrustorganization.Adapters.ProjectCategoryAdapter;
 import com.example.islamictrustorganization.Adapters.ProjectTypeAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
+import com.example.islamictrustorganization.Models.ProjectCategoryModel;
 import com.example.islamictrustorganization.Models.ProjectTypeModel;
 import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
 import com.example.islamictrustorganization.R;
@@ -30,14 +35,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SelectProjectTypeActivity extends AppCompatActivity {
-
+public class SelectProjectCategoryActivity extends AppCompatActivity {
     ImageView btnGoToRequestProject;
-    RecyclerView rvProjectType;
-    ProjectTypeAdapter projectTypeAdapter;
-    ArrayList<ProjectTypeModel> arrData = new ArrayList<>();
-
-    private BroadcastReceiver didSelectedProjectType = new BroadcastReceiver() {
+    RecyclerView rvProjectCategory;
+    ProjectCategoryAdapter projectCategoryAdapter;
+    ArrayList<ProjectCategoryModel> arrProjectCategory = new ArrayList<>();
+    private BroadcastReceiver didSelectedProjectCategory = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d("Project", "Type Selected");
@@ -47,44 +50,51 @@ public class SelectProjectTypeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_project_type);
-//        getActionBar().hide();
-        initailUI();
-        NotificationCenter.addObserver(this, NotificationCenter.NotificationType.PROJECT_TYPE, didSelectedProjectType);
+        setContentView(R.layout.activity_select_project_category);
+        getSupportActionBar().hide();
+        InitUI();
+        NotificationCenter.addObserver(this, NotificationCenter.NotificationType.PROJECT_CATEGORY, didSelectedProjectCategory);
 
     }
 
-    private void initailUI() {
+    private void displayAgencies(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        projectCategoryAdapter = new ProjectCategoryAdapter(this, arrProjectCategory);
+        rvProjectCategory.setLayoutManager(layoutManager);
+        rvProjectCategory.setAdapter(projectCategoryAdapter);
+    }
+
+    private void InitUI() {
         btnGoToRequestProject = findViewById(R.id.btn_go_to_request_project);
         btnGoToRequestProject.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });
-        rvProjectType = findViewById(R.id.rv_project_type);
-        apiCallGetCarAgencies();
+        rvProjectCategory = findViewById(R.id.rv_project_category);
+        apiCallingForProjectCategory();
+
     }
 
-    private void apiCallGetCarAgencies() {
+    private void apiCallingForProjectCategory() {
         LoadingDialog.getInstance().show(this);
         Map<String, String> mapParams = new HashMap<>();
-        mapParams.put("project_category_id", BaseClass.SelectedProjectCategoryID);
         ServiceManager sharedManager = new ServiceManager();
 
-        sharedManager.apiCaller(EndPoints.kGetProjectTypes, mapParams, this, new APIResponse() {
+        sharedManager.apiCaller(EndPoints.kGetProjectCategory, mapParams, this, new APIResponse() {
             @Override
             public void onSuccess(JSONObject response) {
-
+                Log.e("TAG", "onSuccess: "+ response );
                 try {
 
                     JSONArray arrCarAgencies = response.getJSONArray("data");
                     for(int i =0; i< arrCarAgencies.length(); i++){
                         JSONObject dictType = arrCarAgencies.getJSONObject(i);
-                        ProjectTypeModel projectTypeModel = new ProjectTypeModel();
-                        projectTypeModel.setProjectTypeID(dictType.getInt("id"));
-                        projectTypeModel.setProjectTypeName(dictType.getString("name"));
-                        arrData.add(projectTypeModel);
+                        ProjectCategoryModel projectCategoryModel = new ProjectCategoryModel();
+                        projectCategoryModel.setProjectCategoryID(dictType.getInt("id"));
+                        projectCategoryModel.setProjectCategoryName(dictType.getString("name"));
+                        arrProjectCategory.add(projectCategoryModel);
                     }
                     displayAgencies();
                     LoadingDialog.getInstance().dismiss();
@@ -95,6 +105,7 @@ public class SelectProjectTypeActivity extends AppCompatActivity {
 
             @Override
             public void onError(String error) {
+                Log.e("TAG", "onError: "+ error );
                 LoadingDialog.getInstance().dismiss();
             }
 
@@ -104,14 +115,5 @@ public class SelectProjectTypeActivity extends AppCompatActivity {
 //                Log.i("Car", "Fetching Car Agencies.....");
             }
         });
-
     }
-
-    private void displayAgencies(){
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        projectTypeAdapter = new ProjectTypeAdapter(this, arrData);
-        rvProjectType.setLayoutManager(layoutManager);
-        rvProjectType.setAdapter(projectTypeAdapter);
-    }
-
 }

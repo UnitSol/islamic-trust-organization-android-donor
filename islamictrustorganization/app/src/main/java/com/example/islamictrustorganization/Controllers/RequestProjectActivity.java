@@ -38,14 +38,22 @@ import java.util.Map;
 public class RequestProjectActivity extends AppCompatActivity {
 
     ImageView goToMyProjects;
-    RelativeLayout rlSelectProjectType;
-    TextView txtProjectType;
-    EditText txtRequestName , txtRequestCost;
+    RelativeLayout rlSelectProjectType , rlSelectProjectCategory;
+    TextView txtProjectType , txtProjectCategory;
+    EditText txtRequestName , txtRequestCost , txtActualDonorName  ;
     Button btnRequestProject;
     private BroadcastReceiver didSelectedProjectType = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             txtProjectType.setText(BaseClass.SelectedProjectType);
+            Log.e("TAG", "onReceive: " + BaseClass.SelectedProjectType);
+
+        }
+    };
+    private BroadcastReceiver didSelectedProjectCategory = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            txtProjectCategory.setText(BaseClass.SelectedProjectCategory);
             Log.e("TAG", "onReceive: " + BaseClass.SelectedProjectType);
 
         }
@@ -57,6 +65,7 @@ public class RequestProjectActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         initUI();
         NotificationCenter.addObserver(RequestProjectActivity.this, NotificationCenter.NotificationType.PROJECT_TYPE, didSelectedProjectType);
+        NotificationCenter.addObserver(RequestProjectActivity.this, NotificationCenter.NotificationType.PROJECT_CATEGORY, didSelectedProjectCategory);
         btnRequestProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,8 +165,12 @@ public class RequestProjectActivity extends AppCompatActivity {
         rlSelectProjectType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RequestProjectActivity.this , SelectProjectTypeActivity.class);
-                startActivity(intent);
+                if(BaseClass.SelectedProjectCategoryID == null){
+                    Toast.makeText(RequestProjectActivity.this, "Please Select Project Category", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(RequestProjectActivity.this , SelectProjectTypeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         txtProjectType = findViewById(R.id.txt_project_type);
@@ -172,6 +185,16 @@ public class RequestProjectActivity extends AppCompatActivity {
         txtRequestName = findViewById(R.id.txt_request_name);
         txtRequestCost = findViewById(R.id.txt_request_cost);
         btnRequestProject = findViewById(R.id.btn_request_project);
+        rlSelectProjectCategory = findViewById(R.id.rl_select_project_category);
+        txtActualDonorName = findViewById(R.id.txt_actual_donor_name);
+        txtProjectCategory = findViewById(R.id.txt_project_category);
+        rlSelectProjectCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RequestProjectActivity.this , SelectProjectCategoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void displayAlert(String title, String body) {

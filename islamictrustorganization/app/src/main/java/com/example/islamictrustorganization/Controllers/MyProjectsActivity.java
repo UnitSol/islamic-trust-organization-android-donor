@@ -102,6 +102,7 @@ public class MyProjectsActivity extends AppCompatActivity implements TabLayoutMe
         });
         btnRequestProject = findViewById(R.id.btn_request_project);
         btnRequestProject.setOnClickListener(view -> {
+            BaseClass.SelectedProjectCategoryID = null;
             BaseClass.SelectedProjectTypeID = null;
             Intent intent = new Intent(MyProjectsActivity.this , RequestProjectActivity.class);
             startActivity(intent);
