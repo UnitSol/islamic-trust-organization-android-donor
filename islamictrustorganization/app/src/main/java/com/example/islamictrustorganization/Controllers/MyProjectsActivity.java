@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,15 +18,11 @@ import com.example.islamictrustorganization.Adapters.ViewPageAdapter;
 import com.example.islamictrustorganization.BaseClass;
 import com.example.islamictrustorganization.Fragments.CompletedProjectFragment;
 import com.example.islamictrustorganization.Fragments.OnGoingProjectFragment;
-import com.example.islamictrustorganization.Helpers.UserHelper;
 import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
 import com.example.islamictrustorganization.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 

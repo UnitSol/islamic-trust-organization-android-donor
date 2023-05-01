@@ -1,7 +1,5 @@
 package com.example.islamictrustorganization.Controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,9 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,8 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.islamictrustorganization.BaseClass;
-import com.example.islamictrustorganization.Helpers.UserHelper;
 import com.example.islamictrustorganization.Interfaces.APIResponse;
 import com.example.islamictrustorganization.LoadingDialog;
 import com.example.islamictrustorganization.NotificationCenter.NotificationCenter;
@@ -89,7 +85,7 @@ public class RequestProjectActivity extends AppCompatActivity {
             mapParams.put("user_id", BaseClass.userID);
             mapParams.put("name", txtRequestName.getText().toString());
             mapParams.put("cost", txtRequestCost.getText().toString());
-
+            mapParams.put("actual_donor_name", txtActualDonorName.getText().toString());
             try {
 
                 ServiceManager serviceManager = new ServiceManager();
