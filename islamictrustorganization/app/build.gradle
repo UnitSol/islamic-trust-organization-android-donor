@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    namespace 'com.example.islamictrustorganization'
+    namespace 'com.itodonor.app'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.islamictrustorganization"
+        applicationId "com.itodonor.app"
         minSdk 21
         targetSdk 32
-        versionCode 3
+        versionCode 4
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

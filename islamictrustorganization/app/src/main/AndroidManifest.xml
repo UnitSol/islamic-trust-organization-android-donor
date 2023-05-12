@@ -24,113 +24,113 @@
         android:theme="@style/Theme.IslamicTrustOrganization"
         tools:targetApi="31">
         <activity
-            android:name=".Controllers.SelectProjectCategoryActivity"
+            android:name="com.itodonor.app.Controllers.SelectProjectCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.MyRequestActivity"
+            android:name="com.itodonor.app.Controllers.MyRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.SelectProjectTypeActivity"
+            android:name="com.itodonor.app.Controllers.SelectProjectTypeActivity"
             android:exported="false"
             android:label="@string/title_activity_select_project_type"
             android:theme="@style/Theme.IslamicTrustOrganization.NoActionBar" />
         <activity
-            android:name=".Controllers.RequestProjectActivity"
+            android:name="com.itodonor.app.Controllers.RequestProjectActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.VedioPlayerActivity"
+            android:name="com.itodonor.app.Controllers.VedioPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.MyProjectsActivity"
+            android:name="com.itodonor.app.Controllers.MyProjectsActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.UserProfileActivity"
+            android:name="com.itodonor.app.Controllers.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.MoreActivity"
+            android:name="com.itodonor.app.Controllers.MoreActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.NewProjectDetailActivity"
+            android:name="com.itodonor.app.Controllers.NewProjectDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.DashBoardActivity"
+            android:name="com.itodonor.app.Controllers.DashBoardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.ZoomActivity"
+            android:name="com.itodonor.app.Controllers.ZoomActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.ProjectUpdateDetailActivity"
+            android:name="com.itodonor.app.Controllers.ProjectUpdateDetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.NewProjectActivity"
+            android:name="com.itodonor.app.Controllers.NewProjectActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.ProjectDetailActivity"
+            android:name="com.itodonor.app.Controllers.ProjectDetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.MakeDonationActivity"
+            android:name="com.itodonor.app.Controllers.MakeDonationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.LandingActivity"
+            android:name="com.itodonor.app.Controllers.LandingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.EmailVerificationActivity"
+            android:name="com.itodonor.app.Controllers.EmailVerificationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.NewPasswordActivity"
+            android:name="com.itodonor.app.Controllers.NewPasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.ForgetPasswordActivity"
+            android:name="com.itodonor.app.Controllers.ForgetPasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.LogInActivity"
+            android:name="com.itodonor.app.Controllers.LogInActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Controllers.SplashActivity"
+            android:name="com.itodonor.app.Controllers.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
